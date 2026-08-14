@@ -30,8 +30,7 @@ export default function HeroBackground() {
           onError={() => setVideoFailed(true)}
           className="absolute inset-0 h-full w-full object-cover"
         >
-          {/* <source src="/hero-video.webm" type="video/webm" /> */}
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/c2wyo4vs/video/upload/v1786695815/hero-video.mp4" type="video/mp4" />
         </video>
       )}
 
