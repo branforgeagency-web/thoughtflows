@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-navy-900 font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-teal-500/25 text-navy-900;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-navy-900/10 shadow-[0_4px_24px_-8px_rgba(21,63,108,0.10)];
+  }
+  .glass-strong {
+    @apply bg-white/85 backdrop-blur-2xl border border-navy-900/10 shadow-[0_8px_32px_-8px_rgba(21,63,108,0.14)];
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-teal-500 to-navy-600;
+  }
+  .section-pad {
+    @apply px-6 md:px-10 lg:px-20 py-12 md:py-16;
+  }
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Sections stack directly on top of one another on pages like Home and
+   About with no hero/divider between them — without this, each section's
+   own top+bottom padding compounds into a large empty gap at every
+   boundary. Only collapse the gap between two sections that share the same
+   background, so alternating background colors (and the eyebrow badge at
+   the top of the new band) still get proper breathing room instead of
+   sitting flush against the color seam. */
+.section-pad.bg-white + .section-pad.bg-white,
+.section-pad.bg-slate-50 + .section-pad.bg-slate-50 {
+  padding-top: 0;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #0f8f9a; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #16adba; }
