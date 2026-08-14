@@ -26,6 +26,7 @@ import MagneticButton from "../components/MagneticButton";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
 import { BRANCHES } from "../data/branches";
+import { ALL_COURSE_OPTIONS } from "../config/allCoursesList";
 
 function splitCity(city) {
   const [cityPart, statePart] = (city || "").split(",").map((s) => s.trim());
@@ -613,11 +614,9 @@ export default function BranchDetail() {
                       onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                       className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-navy-900 focus:bg-white focus:border-[#16ADBA] outline-none transition cursor-pointer"
                     >
-                      <option value="cpc-certification">Certified Professional Coder (CPC)</option>
-                      <option value="ccs-certification">Certified Coding Specialist (CCS)</option>
-                      <option value="hcc-risk-adjustment">HCC Risk Adjustment Coding</option>
-                      <option value="medical-billing-denial-management">Medical Billing & Denial Management</option>
-                      <option value="medical-coding-foundation">Medical Coding Foundation Program</option>
+                      {ALL_COURSE_OPTIONS.map((c) => (
+                        <option key={c.value} value={c.value}>{c.label}</option>
+                      ))}
                     </select>
                   </div>
 

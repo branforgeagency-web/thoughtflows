@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, CheckCircle2, ArrowRight, Building2, Sparkles, Award, Send, Search, Briefcase } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
 import CTASection from "../components/sections/CTASection";
+import { ALL_COURSE_OPTIONS } from "../config/allCoursesList";
 
 const placedCandidates = [
   {
@@ -403,11 +404,9 @@ export default function Placements() {
                         onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                         className="w-full bg-white border border-amber-200/80 rounded-2xl px-4 py-3.5 text-sm text-navy-900 focus:border-[#16ADBA] outline-none shadow-sm transition-all cursor-pointer"
                       >
-                        <option value="cpc-certification">CPC Certification</option>
-                        <option value="ccs-certification">CCS Certification</option>
-                        <option value="hcc-risk-adjustment">HCC Risk Adjustment</option>
-                        <option value="medical-billing-denial-management">Medical Billing</option>
-                        <option value="medical-coding-foundation">Foundation Program</option>
+                        {ALL_COURSE_OPTIONS.map((c) => (
+                          <option key={c.value} value={c.value}>{c.label}</option>
+                        ))}
                       </select>
                     </div>
 

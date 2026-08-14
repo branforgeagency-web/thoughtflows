@@ -14,15 +14,7 @@ import {
 } from "lucide-react";
 import RevealOnScroll from "../RevealOnScroll";
 import MagneticButton from "../MagneticButton";
-
-const COURSE_IMAGES = {
-  "cpc-certification": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
-  "ccs-certification": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80",
-  "hcc-risk-adjustment": "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1200&q=80",
-  "medical-billing-denial-management": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
-  "medical-coding-foundation": "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1200&q=80",
-  "advanced-em-surgery-coding": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80"
-};
+import { getCourseImage } from "../../config/courseImages";
 
 const coursesData = [
   {
@@ -35,7 +27,7 @@ const coursesData = [
     format: "Online & Classroom",
     badge: "Most Popular AAPC Track",
     rating: "4.9 ★ (12,400+ Students)",
-    image: COURSE_IMAGES["cpc-certification"],
+    image: getCourseImage("cpc-certification"),
     highlights: ["CPT & ICD-10-CM Medical Coding", "100+ Live Mock Exam Drills", "AAPC Exam Voucher & Retake Support"]
   },
   {
@@ -48,7 +40,7 @@ const coursesData = [
     format: "Classroom & Live Online",
     badge: "Inpatient Hospital Specialist",
     rating: "4.8 ★ (8,900+ Students)",
-    image: COURSE_IMAGES["ccs-certification"],
+    image: getCourseImage("ccs-certification"),
     highlights: ["ICD-10-PCS Inpatient Coding", "DRG Grouping & Clinical Auditing", "Hospital Medical Record Review"]
   },
   {
@@ -61,7 +53,7 @@ const coursesData = [
     format: "Online Interactive",
     badge: "High Growth Specialty",
     rating: "4.9 ★ (6,200+ Students)",
-    image: COURSE_IMAGES["hcc-risk-adjustment"],
+    image: getCourseImage("hcc-risk-adjustment"),
     highlights: ["RAF Score & CMS Guidelines", "Chart Auditing & Compliance", "Medicare Advantage Analytics"]
   },
   {
@@ -74,7 +66,7 @@ const coursesData = [
     format: "Online & Offline",
     badge: "RCM Career Track",
     rating: "4.8 ★ (5,100+ Students)",
-    image: COURSE_IMAGES["medical-billing-denial-management"],
+    image: getCourseImage("medical-billing-denial-management"),
     highlights: ["Claims Scrubbing & AR Follow-up", "Denial Management Strategies", "HIPAA & Billing Software"]
   },
   {
@@ -87,7 +79,7 @@ const coursesData = [
     format: "Classroom Training",
     badge: "Beginner Friendly",
     rating: "4.9 ★ (15,000+ Graduates)",
-    image: COURSE_IMAGES["medical-coding-foundation"],
+    image: getCourseImage("medical-coding-foundation"),
     highlights: ["Human Anatomy & Physiology 3D", "Medical Terminology Mastery", "ICD-10-CM Coding Fundamentals"]
   },
   {
@@ -100,7 +92,7 @@ const coursesData = [
     format: "Online Interactive",
     badge: "Advanced Level",
     rating: "4.9 ★ (4,800+ Students)",
-    image: COURSE_IMAGES["advanced-em-surgery-coding"],
+    image: getCourseImage("advanced-em-surgery-coding"),
     highlights: ["Operative Report Coding", "E/M Audit Guidelines 2024", "Complex Surgical Modifiers"]
   }
 ];

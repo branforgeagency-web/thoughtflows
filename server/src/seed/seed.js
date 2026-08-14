@@ -45,77 +45,201 @@ const courseData = [
   {
     name: "Certified Professional Coder (CPC)",
     slug: "cpc-certification",
-    tagline: "The industry gold-standard AAPC certification",
-    duration: "3 Months",
-    format: "Classroom + Live Online",
+    eyebrow: "INDIA'S LEADING ONLINE & OFFLINE Medical Coding Academy",
+    tagline: "Certified Professional Coder (CPC) certification is the gold standard for medical coding. It validates your ability to accurately assign CPT, ICD-10-CM, and HCPCS Level II codes for physician and outpatient claims.",
+    duration: "2-3 Months",
+    format: "Online & Offline",
     description:
       "A comprehensive program covering CPT, ICD-10-CM, and HCPCS Level II coding systems, built to prepare you for the AAPC CPC certification exam and real-world claims coding.",
     whatIsIt:
-      "The Certified Professional Coder (CPC) credential, issued by the AAPC, is the most widely recognized certification in outpatient medical coding. It validates your ability to accurately assign CPT, ICD-10-CM, and HCPCS Level II codes for physician and outpatient claims — the exact skill set clinics, hospitals, and payers hire for.",
+      "Certified Professional Coder (CPC) certification is the gold standard for medical coding. It validates your ability to accurately assign CPT, ICD-10-CM, and HCPCS Level II codes for physician and outpatient claims — the exact skill set clinics, hospitals, and healthcare RCM organizations hire for worldwide.",
+    whyItMatters:
+      "Medical coders review medical documentation and translate healthcare services into standardized code sets. Certified coders ensure billing accuracy, compliance, and swift claims reimbursement across outpatient centers and hospitals.",
     whoIsItFor: [
-      "Life science, nursing, or pharmacy graduates entering healthcare BPO",
-      "Working professionals switching into medical coding",
-      "Coders wanting an AAPC credential to unlock better roles",
-      "Anyone comfortable with detail-heavy, rules-based work"
+      "Life science, nursing, and pharmacy graduates",
+      "Healthcare professionals looking for career growth",
+      "Medical coders expanding into AAPC specialty certifications",
+      "Detail-oriented students seeking high-demand healthcare careers"
     ],
     roles: [
-      "Reviewing patient records for billing and coding compliance",
-      "Assigning accurate CPT, ICD-10-CM, and HCPCS Level II codes",
-      "Flagging documentation gaps before claims submission",
-      "Helping practices stay audit-ready and reduce claim denials"
+      "Reviewing clinical records for billing and coding accuracy",
+      "Assigning CPT, ICD-10-CM, and HCPCS Level II code sets",
+      "Ensuring compliance with healthcare audit guidelines",
+      "Preventing claims denials and optimizing reimbursement"
     ],
-    batchOptions: standardBatches,
-    examOverview: { duration: "4 Hours", format: "100 MCQs (Open Code Book)", passRequirement: "70% or higher", language: "English" },
+    batchOptions: [
+      { label: "Standard Training Duration", schedule: "2-3 Months (Weekday & Weekend Batches)" },
+      { label: "Learning Mode", schedule: "Classroom & Live Interactive Online" },
+      { label: "Placement Assistance", schedule: "100% Placement Support" },
+      { label: "Admissions & Counseling Contact", schedule: "+91 91764 43331" }
+    ],
+    examOverview: {
+      duration: "4 Hours",
+      format: "100 MCQs (Open Code Book)",
+      passRequirement: "70% or higher",
+      language: "English",
+      codeBooks: "AAPC Official CPT, ICD-10-CM & HCPCS Level II"
+    },
+    highlights: [
+      "High Job Demand",
+      "Flexible Work Models",
+      "Globally Recognized Certification"
+    ],
+    whyChooseCPC: [
+      {
+        title: "Expert Management",
+        description: "Experienced faculty guiding through real chart coding and exam preparation."
+      },
+      {
+        title: "Comprehensive Study Material",
+        description: "Includes latest CPT, ICD-10-CM & HCPCS Level II codebooks & practice tests."
+      },
+      {
+        title: "Flexible Learning Modes",
+        description: "Online & Offline flexible batches tailored for students & working professionals."
+      },
+      {
+        title: "Practical Experience",
+        description: "Hands-on medical records chart coding practice with live physician documentation."
+      },
+      {
+        title: "CPC Exam Readiness",
+        description: "Timed mock exams & score analysis to ensure first-attempt pass success."
+      },
+      {
+        title: "Placement Support",
+        description: "Resume preparation, mock interviews & direct hiring referrals to 500+ healthcare companies."
+      }
+    ],
+    placementServices: {
+      title: "Placement Services",
+      subtitle: "Transform your career path with Thoughtflows CPC Certification",
+      before: [
+        "Limited growth opportunities in basic entry-level roles",
+        "Non-certified coding background with lower pay scales",
+        "Uncertain career roadmap and slow progression",
+        "Difficulty clearing initial employer technical screenings"
+      ],
+      after: [
+        "High demand across top hospitals & international RCM MNCs",
+        "Direct eligibility for Senior Coder & Auditor positions",
+        "Clear career path to Coding Lead, QA & Billing Manager",
+        "Competitive compensation packages & remote work opportunities"
+      ]
+    },
     features: standardFeatures("CPC"),
-    skills: ["CPT Coding", "ICD-10-CM", "HCPCS Level II", "Medical Terminology", "Anatomy & Physiology", "Claims Compliance"],
-    careerOpportunities: ["Medical Coder", "Coding Auditor", "Claims Analyst", "Coding QA Specialist"],
+    skills: ["CPT Coding", "ICD-10-CM", "HCPCS Level II", "Medical Terminology", "Anatomy & Physiology", "Chart Auditing", "Claims Compliance", "Denial Management"],
+    careerOpportunities: ["Medical Coder", "CPC Certified Coder", "Senior Coding Specialist", "Medical Coding Auditor", "Claims Analyst", "Billing & Coding Team Lead"],
     curriculum: [
       {
         title: "Medical Terminology & Anatomy",
-        topics: ["Word roots, prefixes & suffixes", "Body systems & organ function", "Disease processes & pathophysiology basics", "Medical documentation vocabulary"]
+        topics: [
+          "Fundamentals of human anatomy, physiology, and medical terms needed for accurate coding.",
+          "Body systems, anatomical terminology, and directional terms",
+          "Clinical documentation vocabulary and diagnostic phrasing"
+        ]
       },
       {
-        title: "ICD-10-CM Diagnosis Coding",
-        topics: ["ICD-10-CM structure & guidelines", "Alphabetic Index & Tabular List navigation", "Coding for chronic vs. acute conditions", "Applying coding conventions correctly"]
+        title: "ICD-10-CM Coding Guidelines",
+        topics: [
+          "In-depth training on diagnosis coding conventions, official guidelines, and chapter-specific rules.",
+          "Alphabetic Index and Tabular List navigation techniques",
+          "Coding rules for acute vs chronic diseases and sequelae"
+        ]
       },
       {
-        title: "CPT Coding for Procedures & Services",
-        topics: ["Evaluation and Management (E/M) coding", "Surgical procedure coding basics", "Anesthesia, Radiology & Pathology sections", "CPT modifiers for accurate claims"]
+        title: "CPT Coding & Procedure Basics",
+        topics: [
+          "Core principles of procedure coding, E/M coding, surgery guidelines, and modifiers usage.",
+          "Evaluation and Management (E/M) service level selection",
+          "Surgical, Radiology, Pathology & Anesthesia procedure coding"
+        ]
       },
       {
         title: "HCPCS Level II Coding",
-        topics: ["Durable medical equipment (DME) codes", "Drug & supply coding", "HCPCS modifiers", "Coordinating CPT and HCPCS on one claim"]
+        topics: [
+          "Understanding national codes for supplies, equipment, drugs, and outpatient services.",
+          "Durable Medical Equipment (DME) coding & national modifiers",
+          "Coordinating CPT and HCPCS codes on single outpatient claims"
+        ]
       },
       {
-        title: "Medical Coding Guidelines",
-        topics: ["Official coding conventions", "Payer-specific documentation rules", "Medical necessity requirements", "Common coding & billing errors"]
+        title: "Chart Auditing & Compliance",
+        topics: [
+          "Reviewing clinical charts, ensuring documentation compliance, HIPAA rules, and fraud prevention.",
+          "Healthcare compliance, OIG guidelines, and audit preparedness",
+          "Identifying documentation gaps to prevent claim rejections"
+        ]
       },
       {
-        title: "Modifiers & Compliance Regulations",
-        topics: ["HIPAA and healthcare compliance basics", "Fraud, abuse & auditability rules", "Correct modifier usage by scenario", "Compliance red flags in real claims"]
+        title: "Claims & Denial Management",
+        topics: [
+          "Understanding healthcare reimbursement, claim submission workflows, and resolving code-related claim denials.",
+          "End-to-end RCM workflow from patient intake to claim pay-out",
+          "Analyzing denial codes and resubmitting clean corrected claims"
+        ]
       },
       {
-        title: "Case Studies & Real-World Applications",
-        topics: ["Hands-on coding of real medical charts", "Case studies across specialties (e.g. orthopedics, cardiology)", "Coding for common conditions & procedures"]
+        title: "Mock Exams & Exam Prep Strategy",
+        topics: [
+          "Timed full-length CPC model exams, doubt clearing sessions, and test-taking strategies.",
+          "Simulated 4-hour AAPC exam environment and time management",
+          "Item-by-item score analysis and focus areas review"
+        ]
       },
       {
-        title: "Mock Tests",
-        topics: ["Full-length CPC-style mock exams", "Timed practice sessions", "Detailed feedback & error analysis", "Test-taking & time-management strategies"]
+        title: "Career & Placement Assistance",
+        topics: [
+          "Resume building, LinkedIn profile setup, mock interviews, and guaranteed placement assistance.",
+          "Technical coding interview preparation with subject matter leads",
+          "Direct interview referrals across 500+ corporate hiring partners"
+        ]
       }
     ],
     faqs: [
-      { question: "Who is eligible to apply for CPC training?", answer: "Any graduate — life sciences, pharmacy, nursing, or general — as well as working professionals looking to move into medical coding. No prior coding experience is required." },
-      { question: "What is the duration of the CPC training program?", answer: "The standard CPC program runs for 3 months, covering theory, hands-on chart practice, and exam preparation." },
-      { question: "What study materials are provided during the course?", answer: "You get official code books guidance, LMS access, downloadable reference charts, and topic-wise practice sets for the full duration of the course and beyond." },
-      { question: "Are the classes conducted online or offline?", answer: "Both — you can choose classroom training at any of our branches or attend live online sessions with the same instructors and material." },
-      { question: "What is the format of the CPC exam?", answer: "The AAPC CPC exam is a 4-hour, 100-question multiple-choice exam. It's an open code book exam, so you're tested on applying guidelines, not memorizing codes." },
-      { question: "Does Thoughtflows provide placement support?", answer: "Yes. Our placement cell works with 500+ hiring partners and supports you with resume building, mock interviews, and direct interview referrals after certification." },
-      { question: "Do you offer mock exams and assessments during the course?", answer: "Yes, you'll take multiple full-length and topic-wise mock exams throughout the program, each followed by a detailed score review." },
-      { question: "What is the pass rate for CPC exams at Thoughtflows?", answer: "Our CPC first-attempt pass rate is consistently above 90%, backed by structured mock testing and one-on-one doubt clearing." },
-      { question: "How do I register for the CPC exam?", answer: "Our team guides you through official AAPC exam registration once you're mock-test ready, including exam center and date selection." },
-      { question: "Who can I contact to apply for the CPC program?", answer: "Reach out through our Contact page or call your nearest branch — our counsellors will walk you through batch options and enrollment." }
+      {
+        question: "What is the eligibility for CPC training?",
+        answer: "Any graduate (life sciences, pharmacy, nursing, or general) or working professional looking to start or advance a medical coding career can enroll. No prior coding experience is required."
+      },
+      {
+        question: "What is the duration of the CPC training program?",
+        answer: "The standard CPC training program runs for 2 to 3 months, offering flexible weekday and weekend options to suit both fresh graduates and working professionals."
+      },
+      {
+        question: "Is classroom and online training available?",
+        answer: "Yes! We offer both offline classroom training at all 15 branches nationwide and live interactive online batches with dedicated mentor support."
+      },
+      {
+        question: "What certification exam does this course prepare for?",
+        answer: "This course specifically prepares students for the official AAPC Certified Professional Coder (CPC) examination."
+      },
+      {
+        question: "Does Thoughtflows provide job placement assistance?",
+        answer: "Yes, we provide 100% placement support with resume optimization, mock technical interviews, and direct hiring referrals to 500+ healthcare companies."
+      },
+      {
+        question: "Is medical background mandatory for CPC certification?",
+        answer: "No, a medical background is not mandatory. Candidates from non-medical fields are given comprehensive foundational training in human anatomy and medical terminology."
+      },
+      {
+        question: "What code books are required for CPC training?",
+        answer: "The program requires the official AAPC CPT, ICD-10-CM, and HCPCS Level II codebooks, which are guided and reviewed extensively in class."
+      },
+      {
+        question: "How to register for CPC exam?",
+        answer: "Our academic team guides you step-by-step through official AAPC exam voucher registration, center selection, and exam scheduling."
+      },
+      {
+        question: "What is the salary of a CPC certified coder?",
+        answer: "CPC certified coders earn competitive packages starting from ₹3.5 LPA to ₹8+ LPA depending on experience, specialty, and employer organization."
+      },
+      {
+        question: "Are mock exams included in the course?",
+        answer: "Yes, multiple timed full-length mock exams modeled after the actual AAPC exam format are included, complete with detailed score reviews."
+      }
     ],
     fee: "₹45,000",
+    phone: "+91 91764 43331",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     featured: true,
     order: 1

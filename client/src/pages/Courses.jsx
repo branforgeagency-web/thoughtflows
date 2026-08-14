@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
 import CTASection from "../components/sections/CTASection";
+import { getCourseImage } from "../config/courseImages";
 
 const ALL_COURSES = [
   // ----------------------------------------------------------------------
@@ -475,7 +476,7 @@ export default function Courses() {
                       {/* Card Photo & Category Badge */}
                       <div className="relative h-52 overflow-hidden bg-slate-900">
                         <img
-                          src={course.image}
+                          src={getCourseImage(course.slug || course)}
                           alt={course.name}
                           loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"

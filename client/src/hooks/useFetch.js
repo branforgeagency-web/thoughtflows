@@ -12,6 +12,7 @@ export default function useFetch(endpoint, { deps = [], enabled = true } = {}) {
 
   const refetch = useCallback(async () => {
     if (!enabled || !endpoint) return;
+    setData(null);
     setLoading(true);
     setError(null);
     try {
