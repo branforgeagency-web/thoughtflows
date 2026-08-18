@@ -62,8 +62,8 @@ export default function Footer() {
       <div className="container-max px-6 md:px-10 lg:px-16 relative z-10 flex flex-wrap justify-between items-start gap-x-6 gap-y-10">
         {/* Brand & Intro Column */}
         <div className="w-full lg:w-auto max-w-sm flex flex-col gap-4">
-          <Link to="/" className="inline-block self-start bg-white px-4 py-2 rounded-xl shadow-md transition-transform hover:scale-105">
-            <img src="/logo.png" alt="Thoughtflows Medical Coding Academy" className="h-10 md:h-12 w-auto object-contain" />
+          <Link to="/" className="inline-block self-start hover:opacity-90 transition-opacity">
+            <img src="/thoughtflows-banner.png" alt="Thoughtflows Medical Coding Academy" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
           <p className="text-white/80 text-sm md:text-base leading-relaxed font-normal">
             Enroll at Thoughtflows Medical Coding Academy for top-notch medical coding training. Our courses are designed to provide comprehensive education and practical experience, ensuring students become proficient and certified medical coders.

@@ -27,7 +27,7 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen flex bg-white">
       <aside className="hidden md:flex w-64 shrink-0 border-r border-navy-900/10 flex-col p-6 gap-1">
-        <img src="/logo.png" alt="Thoughtflows" className="h-9 w-auto object-contain mb-8" />
+        <img src="/thoughtflows.png" alt="Thoughtflows" className="h-9 w-auto object-contain mb-8" />
         <NavItem to="/admin" end icon={LayoutDashboard} label="Overview" />
         {Object.entries(resources).map(([key, config]) => (
           <NavItem key={key} to={`/admin/resources/${key}`} icon={icons[key] || BookOpen} label={config.label} />

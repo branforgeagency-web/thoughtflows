@@ -129,18 +129,22 @@ export default function Navbar() {
           : "py-5 bg-gradient-to-b from-navy-950/75 via-navy-950/35 to-transparent"
       }`}
     >
-      <nav className="container-max flex items-center justify-between px-6 md:px-10 lg:px-16">
+      <nav className="container-max flex flex-nowrap items-center justify-between gap-4 md:gap-6 px-6 md:px-10 lg:px-16">
         {/* Brand Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 shrink-0 bg-white/95 backdrop-blur-sm rounded-xl px-3 py-1.5 shadow-sm hover:scale-105 transition-transform"
+          className="flex items-center shrink-0 hover:opacity-90 transition-opacity whitespace-nowrap"
           onClick={() => setOpen(false)}
         >
-          <img src="/logo.png" alt="Thoughtflows" className="h-9 md:h-10 w-auto object-contain" />
+          <img 
+            src={scrolled ? "/thoughtflows.png" : "/thoughtflows-banner.png"} 
+            alt="Thoughtflows" 
+            className="h-8 md:h-9 lg:h-10 w-auto object-contain transition-all duration-300" 
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8 shrink-0 flex-nowrap whitespace-nowrap">
           <NavLink
             to="/"
             className={({ isActive }) =>
@@ -318,7 +322,7 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <NavLink
+          {/* <NavLink
             to="/our-team"
             className={({ isActive }) =>
               `text-base font-extrabold tracking-wide transition-colors ${
@@ -329,7 +333,7 @@ export default function Navbar() {
             }
           >
             Our team
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/placements"
@@ -359,8 +363,8 @@ export default function Navbar() {
         </div>
 
         {/* CTA Button */}
-        <div className="hidden lg:block">
-          <MagneticButton as={Link} to="/contact" className="!px-6 !py-3 text-sm font-extrabold">
+        <div className="hidden lg:flex items-center shrink-0 whitespace-nowrap">
+          <MagneticButton as={Link} to="/contact" className="!px-6 !py-3 text-sm font-extrabold whitespace-nowrap">
             Enroll Now
           </MagneticButton>
         </div>
@@ -476,9 +480,9 @@ export default function Navbar() {
                 )}
               </div>
 
-              <NavLink to="/our-team" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
+              {/* <NavLink to="/our-team" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
                 Our team
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/placements" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
                 Placements
               </NavLink>
