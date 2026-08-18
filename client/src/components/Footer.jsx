@@ -4,7 +4,7 @@ import { Mail, Phone, Instagram, Linkedin, Youtube, Facebook, ChevronRight } fro
 const linksColumn = [
   { label: "Home", to: "/" },
   { label: "About us", to: "/about" },
-  { label: "Blog", to: "/blog" },
+  { label: "Blog", to: "/blogs" },
   { label: "Our team", to: "/about#team" },
   { label: "Placements", to: "/placements" },
   { label: "Contact", to: "/contact" }
