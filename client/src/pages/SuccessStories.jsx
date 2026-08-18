@@ -3,8 +3,10 @@ import PageHeader from "./PageHeader";
 import RevealOnScroll from "../components/RevealOnScroll";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorState from "../components/ErrorState";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
+import { successStoriesFaqs } from "../config/pageFaqs";
 
 export default function SuccessStories() {
   const { data: testimonials, loading, error, refetch } = useFetch("/testimonials");
@@ -55,6 +57,7 @@ export default function SuccessStories() {
         </div>
       </section>
 
+      <FaqSection items={successStoriesFaqs} />
       <CTASection />
     </>
   );

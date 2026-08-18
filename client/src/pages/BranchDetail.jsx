@@ -23,10 +23,12 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorState from "../components/ErrorState";
 import RevealOnScroll from "../components/RevealOnScroll";
 import MagneticButton from "../components/MagneticButton";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
 import { BRANCHES } from "../data/branches";
 import { ALL_COURSE_OPTIONS } from "../config/allCoursesList";
+import { defaultBranchFaqs } from "../config/pageFaqs";
 
 function splitCity(city) {
   const [cityPart, statePart] = (city || "").split(",").map((s) => s.trim());
@@ -646,6 +648,10 @@ export default function BranchDetail() {
         </div>
       </section>
 
+      <FaqSection
+        items={defaultBranchFaqs(branch.name)}
+        subtitle={`Common questions about admissions, facilities, and batch timings at our ${branch.name} campus.`}
+      />
       <CTASection />
     </div>
   );

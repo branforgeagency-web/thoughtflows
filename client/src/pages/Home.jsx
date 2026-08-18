@@ -5,7 +5,9 @@ import BranchesPreview from "../components/sections/BranchesPreview";
 import ImpactStats from "../components/sections/ImpactStats";
 import WhyChooseUs from "../components/sections/WhyChooseUs";
 import TestimonialsSection from "../components/sections/TestimonialsSection";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
+import { homeFaqs } from "../config/pageFaqs";
 
 export default function Home() {
   return (
@@ -17,6 +19,7 @@ export default function Home() {
       <ImpactStats />
       <WhyChooseUs />
       <TestimonialsSection />
+      <FaqSection items={homeFaqs} />
       <CTASection />
     </>
   );

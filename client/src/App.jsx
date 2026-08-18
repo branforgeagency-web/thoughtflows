@@ -10,6 +10,8 @@ import OurTeam from "./pages/OurTeam";
 import Placements from "./pages/Placements";
 import SuccessStories from "./pages/SuccessStories";
 import Gallery from "./pages/Gallery";
+import Blogs from "./pages/Blogs";
+import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/placements" element={<Placements />} />
         <Route path="/success-stories" element={<SuccessStories />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Phone, Mail, CheckCircle2, ArrowRight, Building2, Sparkles, Award, Send, Search, Briefcase } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import { ALL_COURSE_OPTIONS } from "../config/allCoursesList";
+import { placementsFaqs } from "../config/pageFaqs";
 
 const placedCandidates = [
   {
@@ -457,6 +459,7 @@ export default function Placements() {
         </div>
       </section>
 
+      <FaqSection items={placementsFaqs} />
       <CTASection />
     </div>
   );

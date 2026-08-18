@@ -12,6 +12,7 @@ import placementStatRoutes from "./routes/placementStatRoutes.js";
 import enquiryRoutes from "./routes/enquiryRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import siteContentRoutes from "./routes/siteContentRoutes.js";
+import sitemapRoutes from "./routes/sitemapRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 
 const app = express();
@@ -23,6 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV !== "test") app.use(morgan("dev"));
 
 app.get("/api/health", (req, res) => res.json({ success: true, message: "Thoughtflows API is running" }));
+
+// Sitemap and Robots routes (served on root and /api)
+app.use("/", sitemapRoutes);
+app.use("/api", sitemapRoutes);
 
 app.use("/api/courses", courseRoutes);
 app.use("/api/branches", branchRoutes);

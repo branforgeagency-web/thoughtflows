@@ -7,6 +7,9 @@ import {
 } from "../components/sections/AboutSection";
 import OurMotto from "../components/sections/OurMotto";
 import CoreValues from "../components/sections/CoreValues";
+import FaqSection from "../components/sections/FaqSection";
+import CTASection from "../components/sections/CTASection";
+import { aboutFaqs } from "../config/pageFaqs";
 
 function AboutNavSubBar() {
   const [activeTab, setActiveTab] = useState("who-we-are");
@@ -97,6 +100,8 @@ export default function About() {
       <OurMotto />
       <VisionMissionSectionStandalone />
       <CoreValues />
+      <FaqSection items={aboutFaqs} />
+      <CTASection />
     </>
   );
 }

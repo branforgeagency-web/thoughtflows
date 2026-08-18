@@ -4,7 +4,10 @@ import PageHeader from "./PageHeader";
 import RevealOnScroll from "../components/RevealOnScroll";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorState from "../components/ErrorState";
+import FaqSection from "../components/sections/FaqSection";
+import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
+import { galleryFaqs } from "../config/pageFaqs";
 
 const categories = ["All", "classrooms", "students", "trainers", "events", "workshops", "branches", "certifications"];
 
@@ -69,6 +72,9 @@ export default function Gallery() {
           )}
         </div>
       </section>
+
+      <FaqSection items={galleryFaqs} />
+      <CTASection />
 
       {lightbox && (
         <div

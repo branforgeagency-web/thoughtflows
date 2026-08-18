@@ -5,9 +5,11 @@ import { MapPin, Phone, ArrowRight, Search, ExternalLink, Building2, Sparkles } 
 import PageHeader from "./PageHeader";
 import RevealOnScroll from "../components/RevealOnScroll";
 import LoadingSpinner from "../components/LoadingSpinner";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
 import { BRANCHES } from "../data/branches";
+import { branchesFaqs } from "../config/pageFaqs";
 
 export default function Branches() {
   const { data: apiBranches, loading } = useFetch("/branches");
@@ -202,6 +204,7 @@ export default function Branches() {
         </div>
       </section>
 
+      <FaqSection items={branchesFaqs} />
       <CTASection />
     </>
   );

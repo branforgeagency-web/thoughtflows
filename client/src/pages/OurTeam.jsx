@@ -2,7 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Award, ShieldCheck, Mail, Phone, Users, Building2, UserCheck } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
+import { ourTeamFaqs } from "../config/pageFaqs";
 
 const teamCategories = [
   {
@@ -361,6 +363,7 @@ export default function OurTeam() {
         </AnimatePresence>
       </div>
 
+      <FaqSection items={ourTeamFaqs} />
       <CTASection />
     </div>
   );

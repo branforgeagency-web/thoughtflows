@@ -126,10 +126,10 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "py-3 bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200/60"
-          : "py-5 bg-gradient-to-b from-navy-950/75 via-navy-950/35 to-transparent"
+          : "py-4 bg-gradient-to-b from-navy-950/75 via-navy-950/35 to-transparent"
       }`}
     >
-      <nav className="container-max flex flex-nowrap items-center justify-between gap-4 md:gap-6 px-6 md:px-10 lg:px-16">
+      <nav className="container-max flex flex-row flex-nowrap items-center justify-between gap-4 md:gap-6 px-6 md:px-10 lg:px-16">
         {/* Brand Logo */}
         <Link
           to="/"
@@ -144,37 +144,63 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 shrink-0 flex-nowrap whitespace-nowrap">
+        <div className="hidden lg:flex flex-row items-center gap-6 xl:gap-8 shrink-0 flex-nowrap whitespace-nowrap">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `text-base font-extrabold tracking-wide transition-colors ${
+              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
                 scrolled
                   ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
                   : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
               }`
             }
           >
-            Home
+            {({ isActive }) => (
+              <>
+                <span>Home</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="navUnderline"
+                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </>
+            )}
           </NavLink>
 
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `text-base font-extrabold tracking-wide transition-colors ${
+              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
                 scrolled
                   ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
                   : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
               }`
             }
           >
-            About us
+            {({ isActive }) => (
+              <>
+                <span>About us</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="navUnderline"
+                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </>
+            )}
           </NavLink>
 
           {/* COURSES MEGA DROPDOWN MENU */}
           <div
             ref={coursesRef}
-            className="relative"
+            className="relative flex items-center py-1"
             onMouseEnter={() => setCoursesHovered(true)}
             onMouseLeave={() => setCoursesHovered(false)}
           >
@@ -190,6 +216,15 @@ export default function Navbar() {
               <span>Courses</span>
               <ChevronDown size={14} className={`transition-transform duration-300 ${coursesHovered ? "rotate-180 text-teal-500" : ""}`} />
             </button>
+            {(isCoursesActive || coursesHovered) && (
+              <motion.span
+                layoutId="navUnderline"
+                className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                  scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                }`}
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
 
             {/* Solid White Mega Dropdown Popup Panel */}
             <AnimatePresence>
@@ -230,7 +265,7 @@ export default function Navbar() {
           {/* BRANCHES DROPDOWN MENU */}
           <div
             ref={branchesRef}
-            className="relative"
+            className="relative flex items-center py-1"
             onMouseEnter={() => setBranchesHovered(true)}
             onMouseLeave={() => {
               setBranchesHovered(false);
@@ -249,6 +284,15 @@ export default function Navbar() {
               <span>Branches</span>
               <ChevronDown size={14} className={`transition-transform duration-300 ${branchesHovered ? "rotate-180 text-teal-500" : ""}`} />
             </button>
+            {(isBranchesActive || branchesHovered) && (
+              <motion.span
+                layoutId="navUnderline"
+                className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                  scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                }`}
+                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+              />
+            )}
 
             {/* Main Branches Dropdown Popup */}
             <AnimatePresence>
@@ -322,43 +366,82 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          {/* <NavLink
-            to="/our-team"
-            className={({ isActive }) =>
-              `text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
-              }`
-            }
-          >
-            Our team
-          </NavLink> */}
-
           <NavLink
             to="/placements"
             className={({ isActive }) =>
-              `text-base font-extrabold tracking-wide transition-colors ${
+              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
                 scrolled
                   ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
                   : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
               }`
             }
           >
-            Placements
+            {({ isActive }) => (
+              <>
+                <span>Placements</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="navUnderline"
+                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/blogs"
+            className={({ isActive }) =>
+              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
+                scrolled
+                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
+                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                <span>Blogs</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="navUnderline"
+                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </>
+            )}
           </NavLink>
 
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `text-base font-extrabold tracking-wide transition-colors ${
+              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
                 scrolled
                   ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
                   : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
               }`
             }
           >
-            Contact us
+            {({ isActive }) => (
+              <>
+                <span>Contact us</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="navUnderline"
+                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
+                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
+                    }`}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </>
+            )}
           </NavLink>
         </div>
 
@@ -480,11 +563,11 @@ export default function Navbar() {
                 )}
               </div>
 
-              {/* <NavLink to="/our-team" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
-                Our team
-              </NavLink> */}
               <NavLink to="/placements" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
                 Placements
+              </NavLink>
+              <NavLink to="/blogs" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
+                Blogs
               </NavLink>
               <NavLink to="/contact" onClick={() => setOpen(false)} className="text-base font-extrabold text-navy-900 py-1">
                 Contact us

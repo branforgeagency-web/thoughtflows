@@ -14,8 +14,10 @@ import {
   GraduationCap
 } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import { getCourseImage } from "../config/courseImages";
+import { coursesFaqs } from "../config/pageFaqs";
 
 const ALL_COURSES = [
   // ----------------------------------------------------------------------
@@ -554,6 +556,7 @@ export default function Courses() {
         </div>
       </section>
 
+      <FaqSection items={coursesFaqs} />
       <CTASection />
     </div>
   );

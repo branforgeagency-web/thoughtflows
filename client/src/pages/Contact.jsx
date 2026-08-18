@@ -14,11 +14,13 @@ import {
   MessageSquare
 } from "lucide-react";
 import RevealOnScroll from "../components/RevealOnScroll";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
 import api from "../services/api";
 import { BRANCHES } from "../data/branches";
 import { ALL_COURSE_OPTIONS } from "../config/allCoursesList";
+import { contactFaqs } from "../config/pageFaqs";
 
 const initialForm = { name: "", phone: "", email: "", branch: "", course: "", message: "" };
 
@@ -409,51 +411,8 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* 4. FAQ ACCORDION SECTION                                           */}
-      {/* ------------------------------------------------------------------ */}
-      <section className="py-20 bg-white">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-4xl mx-auto space-y-12">
-          <div className="text-center space-y-3">
-            <span className="inline-flex items-center gap-2 bg-teal-500/15 text-teal-700 font-extrabold text-xs uppercase tracking-widest px-4 py-1 rounded-full">
-              <HelpCircle size={14} /> FAQ
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
-              Frequently Asked Questions
-            </h2>
-            <div className="h-1 w-20 bg-[#16ADBA] mx-auto rounded-full" />
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <div
-                key={faq.q}
-                className="bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden transition-all"
-              >
-                <button
-                  type="button"
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex items-center justify-between p-5 text-left font-extrabold text-navy-900 text-base cursor-pointer hover:text-[#16ADBA] transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    size={18}
-                    className={`transition-transform duration-300 shrink-0 ${
-                      openFaq === idx ? "rotate-180 text-[#16ADBA]" : "text-navy-900/40"
-                    }`}
-                  />
-                </button>
-
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-navy-900/75 text-sm leading-relaxed border-t border-slate-200/60 pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ SECTION */}
+      <FaqSection items={contactFaqs} />
 
       <CTASection />
     </div>

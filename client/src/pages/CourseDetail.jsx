@@ -25,9 +25,11 @@ import RevealOnScroll from "../components/RevealOnScroll";
 import MagneticButton from "../components/MagneticButton";
 import FaqAccordion from "../components/FaqAccordion";
 import SectionHeading from "../components/SectionHeading";
+import FaqSection from "../components/sections/FaqSection";
 import CTASection from "../components/sections/CTASection";
 import useFetch from "../hooks/useFetch";
 import { whyChooseUsItems } from "../config/whyChooseUsItems";
+import { defaultCourseFaqs } from "../config/pageFaqs";
 import { COURSE_IMAGES, getCourseImage } from "../config/courseImages";
 
 const COURSE_FALLBACKS = {
@@ -918,14 +920,10 @@ export default function CourseDetail() {
       </section>
 
       {/* FAQs */}
-      {course.faqs?.length > 0 && (
-        <section className="section-pad pt-0">
-          <div className="container-max max-w-3xl">
-            <SectionHeading eyebrow="FAQs" title="Frequently Asked Questions" />
-            <FaqAccordion items={course.faqs} />
-          </div>
-        </section>
-      )}
+      <FaqSection
+        items={course.faqs?.length ? course.faqs : defaultCourseFaqs}
+        subtitle={`Everything you need to know about enrolling and succeeding in the ${course.name} program.`}
+      />
 
       <CTASection />
     </>
