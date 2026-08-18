@@ -45,7 +45,7 @@ const courseData = [
   {
     name: "Certified Professional Coder (CPC)",
     slug: "cpc-certification",
-    eyebrow: "INDIA'S LEADING ONLINE & OFFLINE Medical Coding Academy",
+    eyebrow: "INDIA'S LEADING ONLINE & OFFLINE the thought flows",
     tagline: "Certified Professional Coder (CPC) certification is the gold standard for medical coding. It validates your ability to accurately assign CPT, ICD-10-CM, and HCPCS Level II codes for physician and outpatient claims.",
     duration: "2-3 Months",
     format: "Online & Offline",

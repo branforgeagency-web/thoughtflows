@@ -2,7 +2,7 @@
   "name": "thoughtflows-server",
   "version": "1.0.0",
   "type": "module",
-  "description": "Backend API for Thoughtflows Medical Coding Academy",
+  "description": "Backend API for the thought flows",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
