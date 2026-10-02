@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, MessageSquare } from "lucide-react";
 import SectionHeading from "../SectionHeading";
 import { whyChooseUsItems as items } from "../../config/whyChooseUsItems";
 
@@ -34,7 +34,6 @@ function Graduation3DIcon() {
             <stop offset="100%" stopColor="#b91c1c" />
           </linearGradient>
         </defs>
-        {/* Diploma Scroll */}
         <g transform="rotate(-15 45 65)">
           <rect x="20" y="58" width="55" height="18" rx="9" fill="url(#scrollGrad)" />
           <rect x="42" y="57" width="10" height="20" rx="3" fill="url(#ribbonGrad)" />
@@ -42,11 +41,8 @@ function Graduation3DIcon() {
           <ellipse cx="20" cy="67" rx="4" ry="9" fill="#cbd5e1" />
           <ellipse cx="75" cy="67" rx="4" ry="9" fill="#f8fafc" />
         </g>
-        {/* Cap Base */}
         <path d="M 35 38 L 65 38 L 65 50 C 65 56 35 56 35 50 Z" fill="url(#capBase)" />
-        {/* Top Diamond */}
         <polygon points="50,15 88,32 50,48 12,32" fill="url(#capTop)" />
-        {/* Button & Tassel */}
         <circle cx="50" cy="31" r="3.5" fill="url(#goldTassel)" />
         <path d="M 50 31 Q 30 35 25 50 L 25 62" fill="none" stroke="url(#goldTassel)" strokeWidth="3" strokeLinecap="round" />
         <circle cx="25" cy="64" r="4" fill="url(#goldTassel)" />
@@ -180,116 +176,237 @@ function Curriculum3DIcon() {
   );
 }
 
-const ICONS_MAP = {
-  training: Graduation3DIcon,
-  learning: Folder3DIcon,
-  placement: Placement3DIcon,
-  experience: Experience3DIcon,
-  curriculum: Curriculum3DIcon
-};
-
 export default function WhyChooseUs() {
-  const topRow = items.slice(0, 3);
-  const bottomRow = items.slice(3, 5);
-
   return (
-    <section className="px-6 md:px-10 lg:px-20 py-10 md:py-14 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-      {/* Background glow highlights */}
-      <div className="absolute top-1/4 left-10 h-72 w-72 rounded-full bg-teal-400/10 blur-3xl pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-10 right-10 h-80 w-80 rounded-full bg-navy-500/10 blur-3xl pointer-events-none" aria-hidden="true" />
+    <section className="px-6 md:px-10 lg:px-20 py-16 md:py-24 bg-white relative overflow-hidden">
+      <div className="container-max relative z-10 space-y-16">
+        
+        {/* Placements and Results Banner Container (Matching Reference Screenshot) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="bg-[#EAF7F9] rounded-[2.5rem] sm:rounded-[3rem] p-6 sm:p-10 lg:p-14 relative overflow-hidden border border-[#12BFD1]/20 shadow-sm"
+        >
+          {/* Top-Right Decorative Circular White Badge */}
+          <div className="absolute top-6 right-6 sm:top-8 sm:right-8 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-xs" />
 
-      <div className="container-max relative z-10">
-        <SectionHeading
-          eyebrow="BEST COACHING"
-          title="Why Choose Thoughtflows Medical Coding Academy?"
-        />
-
-        <div className="mt-12 md:mt-16 flex flex-col gap-8 md:gap-10">
-          {/* Top Row: 3 Cards */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {topRow.map((item, i) => {
-              const IconComp = ICONS_MAP[item.id] || Graduation3DIcon;
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -10 }}
-                  className="group relative bg-white rounded-3xl p-8 md:p-9 border border-slate-200/80 shadow-[0_10px_30px_-5px_rgba(21,63,108,0.07)] hover:shadow-[0_22px_45px_-10px_rgba(22,173,186,0.18)] transition-all duration-300 flex flex-col items-center text-center"
-                >
-                  {/* Floating 3D Icon Container */}
-                  <motion.div
-                    className="mb-4"
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                  >
-                    <IconComp />
-                  </motion.div>
-
-                  <h3 className="text-xl font-bold text-navy-900 leading-snug mb-3.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-navy-900/60 text-sm md:text-base leading-relaxed mb-6 flex-1">
-                    {item.text}
-                  </p>
-
-                  <Link
-                    to={item.link || "/about"}
-                    className="inline-flex items-center gap-1.5 text-teal-600 font-semibold text-sm hover:text-teal-700 transition-all group-hover:gap-2.5 mt-auto"
-                  >
-                    Learn More <ArrowRight size={15} />
-                  </Link>
-                </motion.div>
-              );
-            })}
+          {/* Section Header */}
+          <div className="mb-8 sm:mb-10 space-y-1">
+            <div className="text-[#12BFD1] font-extrabold text-xs sm:text-sm tracking-[0.25em] uppercase font-display flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#12BFD1] animate-pulse" />
+              BEST COACHING ACADEMY
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#063B7A] tracking-tight font-display uppercase">
+              PLACEMENTS AND RESULTS
+            </h2>
           </div>
 
-          {/* Bottom Row: 2 Cards (Centered) */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
-            {bottomRow.map((item, i) => {
-              const IconComp = ICONS_MAP[item.id] || Experience3DIcon;
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 32 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: (i + 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -10 }}
-                  className="group relative bg-white rounded-3xl p-8 md:p-9 border border-slate-200/80 shadow-[0_10px_30px_-5px_rgba(21,63,108,0.07)] hover:shadow-[0_22px_45px_-10px_rgba(22,173,186,0.18)] transition-all duration-300 flex flex-col items-center text-center"
+          {/* Dual Stat Cards Grid */}
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+            
+            {/* Card 1: Placements (Navy Blue Brand Card) */}
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-[#063B7A] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-9 text-white min-h-[320px] sm:min-h-[360px] flex flex-col justify-between overflow-hidden group shadow-xl shadow-[#063B7A]/25 border border-white/10"
+            >
+              <div>
+                {/* Top Avatars Pill */}
+                <div className="inline-flex items-center -space-x-2 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 mb-6 shadow-xs">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
+                    alt="Placed Student 1"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80"
+                    alt="Placed Student 2"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=120&q=80"
+                    alt="Placed Student 3"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/30 border-2 border-white text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                    +
+                  </div>
+                </div>
+
+                {/* Big Stat Number & Label */}
+                <div className="space-y-0.5">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-none">
+                    30000<sup>+</sup>
+                  </div>
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#12BFD1] font-display">
+                    PLACEMENTS
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Action Arrow & Subtitle */}
+              <div className="relative z-20 flex items-end gap-3 pt-6">
+                <Link
+                  to="/placements"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#063B7A] flex items-center justify-center transition-all duration-300 backdrop-blur-md border border-white/40 shrink-0"
                 >
-                  {/* Floating 3D Icon Container */}
+                  <ArrowUpRight className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.5]" />
+                </Link>
+                <div className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-white max-w-[140px] leading-tight font-display">
+                  THOUGHTFLOWS MEDICAL CODING PLACEMENTS
+                </div>
+              </div>
+
+              {/* Right Horizontal Photo Banner Image */}
+              <div className="absolute top-4 bottom-4 right-4 w-[48%] sm:w-[52%] pointer-events-none z-10 flex items-center justify-end">
+                <img
+                  src="/placements-horizontal.jpg"
+                  alt="Medical Coding Placement Certificate"
+                  className="w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-white/20 transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80";
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Card 2: Students Trained (Cyan Teal Brand Card) */}
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="relative bg-[#12BFD1] rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-9 text-white min-h-[320px] sm:min-h-[360px] flex flex-col justify-between overflow-hidden group shadow-xl shadow-[#12BFD1]/25 border border-white/10"
+            >
+              <div>
+                {/* Top Avatars Pill */}
+                <div className="inline-flex items-center -space-x-2 bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 mb-6 shadow-xs">
+                  <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                    alt="Trained Student 1"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                    alt="Trained Student 2"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <img
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80"
+                    alt="Trained Student 3"
+                    className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 border-white object-cover"
+                  />
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/30 border-2 border-white text-white flex items-center justify-center font-bold text-xs shadow-xs">
+                    +
+                  </div>
+                </div>
+
+                {/* Big Stat Number & Label */}
+                <div className="space-y-0.5">
+                  <div className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-display tracking-tight leading-none">
+                    35000<sup>+</sup>
+                  </div>
+                  <div className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#063B7A] font-display">
+                    STUDENTS TRAINED
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Action Arrow & Subtitle */}
+              <div className="relative z-20 flex items-end gap-3 pt-6">
+                <Link
+                  to="/placements"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#12BFD1] flex items-center justify-center transition-all duration-300 backdrop-blur-md border border-white/40 shrink-0"
+                >
+                  <ArrowUpRight className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.5]" />
+                </Link>
+                <div className="text-[11px] sm:text-xs font-black uppercase tracking-wider text-white max-w-[140px] leading-tight font-display">
+                  THOUGHTFLOWS MEDICAL CODING RESULTS
+                </div>
+              </div>
+
+              {/* Right Horizontal Photo Banner Image */}
+              <div className="absolute top-4 bottom-4 right-4 w-[48%] sm:w-[52%] pointer-events-none z-10 flex items-center justify-end">
+                <img
+                  src="/trained-horizontal.jpg"
+                  alt="Medical Coding Students Studying"
+                  className="w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-white/20 transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80";
+                  }}
+                />
+              </div>
+            </motion.div>
+
+          </div>
+        </motion.div>
+
+        {/* Core Benefits / OUR ACADEMY ADVANTAGES - Staggered Cards (Matching Reference Screenshot) */}
+        <div className="pt-6 space-y-10">
+          <SectionHeading
+            eyebrow="OUR ACADEMY ADVANTAGES"
+            title="Why Choose Thoughtflows Medical Coding Academy?"
+            subtitle="Empowering healthcare coders with hands-on hospital chart practice, expert mentorship, and a 100% committed placement cell."
+          />
+
+          {/* Staggered Cards Track with Horizontal Connecting Dashed Line */}
+          <div className="relative py-6">
+            {/* Connecting Dashed Line Across Cards */}
+            <div className="hidden lg:block absolute top-1/2 left-8 right-8 -translate-y-1/2 border-t-2 border-dashed border-[#12BFD1]/50 pointer-events-none z-0" />
+
+            {/* Scrollable / Grid Cards */}
+            <div className="flex lg:grid lg:grid-cols-5 gap-5 overflow-x-auto scrollbar-none pb-8 pt-4 px-2 relative z-10">
+              {items.map((item, i) => {
+                const isEven = i % 2 === 1;
+                return (
                   <motion.div
-                    className="mb-4"
-                    animate={{ y: [0, -6, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: (i + 3) * 0.4 }}
+                    key={item.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                    whileHover={{ y: isEven ? 8 : -8, scale: 1.02 }}
+                    className={`shrink-0 w-[270px] sm:w-[290px] lg:w-auto bg-gradient-to-b from-[#041E3F] via-[#063B7A] to-[#12BFD1] rounded-[2rem] p-6 sm:p-7 text-white flex flex-col justify-between shadow-2xl border border-white/20 transition-all duration-300 relative overflow-hidden group ${
+                      isEven ? "lg:translate-y-6" : "lg:-translate-y-4"
+                    }`}
                   >
-                    <IconComp />
+                    {/* Top Light Wash Glow */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none" />
+
+                    <div>
+                      {/* Top Left White Quote Speech Bubble Icon */}
+                      <div className="w-10 h-10 rounded-full bg-white text-[#12BFD1] flex items-center justify-center shadow-lg mb-5 shrink-0 group-hover:scale-110 transition-transform">
+                        <MessageSquare className="w-5 h-5 fill-[#12BFD1] text-[#12BFD1]" />
+                      </div>
+
+                      {/* Main Body Text */}
+                      <p className="text-white/95 text-xs sm:text-sm leading-relaxed font-medium mb-6 min-h-[140px] sm:min-h-[160px]">
+                        "{item.text}"
+                      </p>
+                    </div>
+
+                    {/* Bottom Title & Author Accent */}
+                    <div className="pt-4 border-t border-white/25 space-y-1">
+                      <h4 className="font-display font-black text-white text-xs sm:text-sm tracking-wide uppercase line-clamp-2 leading-snug">
+                        {item.title}
+                      </h4>
+                      <div className="text-[10px] font-extrabold text-[#12BFD1] uppercase tracking-widest font-display">
+                        ADVANTAGE 0{i + 1}
+                      </div>
+                      <div className="w-12 h-1 bg-[#12BFD1] rounded-full mt-2" />
+                    </div>
                   </motion.div>
-
-                  <h3 className="text-xl font-bold text-navy-900 leading-snug mb-3.5">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-navy-900/60 text-sm md:text-base leading-relaxed mb-6 flex-1">
-                    {item.text}
-                  </p>
-
-                  <Link
-                    to={item.link || "/about"}
-                    className="inline-flex items-center gap-1.5 text-teal-600 font-semibold text-sm hover:text-teal-700 transition-all group-hover:gap-2.5 mt-auto"
-                  >
-                    Learn More <ArrowRight size={15} />
-                  </Link>
-                </motion.div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );
 }
+
+

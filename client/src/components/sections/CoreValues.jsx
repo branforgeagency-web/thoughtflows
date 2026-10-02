@@ -57,8 +57,8 @@ export default function CoreValues() {
   return (
     <section id="core-values" className="bg-[#FAF8F5] py-24 scroll-mt-28 relative overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 -left-20 w-80 h-80 rounded-full bg-[#12BFD1]/15 blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-96 h-96 rounded-full bg-[#A1E7F0]/30 blur-[130px] pointer-events-none" />
 
       <div className="container-max px-6 relative z-10">
         {/* Section Header */}

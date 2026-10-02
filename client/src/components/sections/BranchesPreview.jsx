@@ -33,9 +33,6 @@ function computeDims(width) {
 const CLICK_THRESHOLD = 8; // px of pointer travel below which a tap counts as a click, not a drag
 const DRAG_SENSITIVITY = 0.18; // degrees of rotation per pixel of horizontal drag — lower = heavier, less twitchy
 const MOMENTUM_PROJECTION_MS = 180; // how far (in ms) release velocity is projected forward, i.e. how far a flick carries
-// Tuned for "smooth, heavy, cinematic, precise" per spec: damping ratio ~0.97 (just at critical
-// damping) so every settle glides to a stop with zero bounce, while still arriving briskly.
-const SETTLE_SPRING = { type: "spring", stiffness: 140, damping: 24, mass: 1.1 };
 
 const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 /** Shortest rotational delta (in degrees, -180..180) from `current` to `target`. */
@@ -237,11 +234,15 @@ function BranchOrbitCard({ branch, index, angleStep, radius, perspective, groupR
       }}
     >
       <img
-        src={branch.heroImage}
+        src={branch.heroImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"}
         alt={`Thoughtflows Academy ${branch.name} campus, ${branch.city}`}
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover"
         draggable={false}
+        onError={(e) => {
+          e.currentTarget.onerror = null;
+          e.currentTarget.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+        }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/25 to-ink-950/10" aria-hidden="true" />
       <div className="absolute inset-0 bg-gradient-to-br from-navy-950/35 to-teal-900/15 mix-blend-multiply" aria-hidden="true" />
@@ -335,7 +336,15 @@ function BranchModal({ branch, onClose }) {
         </button>
 
         <div className="relative h-56 md:h-72 overflow-hidden rounded-t-3xl">
-          <img src={branch.heroImage} alt={`${branch.name} campus`} className="h-full w-full object-cover" />
+          <img
+            src={branch.heroImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"}
+            alt={`${branch.name} campus`}
+            className="h-full w-full object-cover"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent" />
           <div className="absolute bottom-5 left-6 md:left-8 right-16">
             <span className="inline-flex items-center gap-1.5 text-teal-300 text-[11px] font-semibold uppercase tracking-[0.2em]">
@@ -373,6 +382,10 @@ function BranchModal({ branch, onClose }) {
                         alt={`${branch.name} — ${g.title}`}
                         loading="lazy"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80";
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                       <span className="absolute bottom-1.5 left-2 right-2 text-white text-[10px] font-medium leading-tight opacity-0 group-hover:opacity-100 transition-opacity">
@@ -641,7 +654,7 @@ export default function BranchesPreview() {
       <section
         ref={sectionRef}
         aria-label="Thoughtflows Academy branch locations"
-        className="relative w-full overflow-hidden bg-white bg-hero-gradient py-12 md:py-16"
+        className="relative w-full overflow-hidden bg-[#F8FCFD] py-16 md:py-24"
       >
         {/* Dynamic City Special Background Landmark Overlay */}
         <AnimatePresence mode="wait">
@@ -649,17 +662,21 @@ export default function BranchesPreview() {
             <motion.div
               key={activeBranch.cityBgImage}
               initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 0.16, scale: 1 }}
+              animate={{ opacity: 0.12, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
             >
               <img
-                src={activeBranch.cityBgImage}
+                src={activeBranch.cityBgImage || "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80"}
                 alt={activeBranch.city}
                 className="w-full h-full object-cover filter blur-[2px]"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80";
+                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/90" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F8FCFD] via-[#F8FCFD]/85 to-[#F8FCFD]/90" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -673,24 +690,24 @@ export default function BranchesPreview() {
         <div
           className="absolute inset-0 pointer-events-none"
           aria-hidden="true"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(22,173,186,0.08), transparent 70%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(18,191,209,0.08), transparent 70%)" }}
         />
 
-        <div className="relative z-20 px-6 md:px-10 lg:px-16 pb-4">
+        <div className="container-max relative z-20 px-6 sm:px-8 lg:px-12 pb-4">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <span className="flex items-center gap-2 text-teal-600 text-xs md:text-sm font-semibold uppercase mb-4">
-              <span className="h-px w-8 bg-teal-400" />
-              <span className="tracking-[0.2em]">Our Locations</span>
+            <span className="flex items-center gap-2 text-[#12BFD1] text-xs md:text-sm font-extrabold uppercase mb-4 tracking-widest">
+              <span className="h-px w-8 bg-[#12BFD1]" />
+              <span>Our Locations</span>
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-navy-900 leading-tight max-w-2xl">
-              Find Your Nearest <span className="text-gradient">Thoughtflows Academy</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#063B7A] leading-tight max-w-2xl font-display">
+              Find Your Nearest <span className="text-[#12BFD1]">Thoughtflows Academy</span>
             </h2>
-            <p className="text-navy-900/55 text-sm md:text-base max-w-xl mt-4 leading-relaxed">
+            <p className="text-[#6B7C8F] text-sm md:text-base max-w-xl mt-4 leading-relaxed font-normal">
               From flagship campuses to regional centers, every branch delivers the same industry-focused curriculum and placement support.
             </p>
           </motion.div>
@@ -756,7 +773,7 @@ export default function BranchesPreview() {
               </button>
             </div>
 
-            <div className="relative z-20 px-6 md:px-10 lg:px-16 pb-8 md:pb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div className="container-max relative z-20 px-6 sm:px-8 lg:px-12 pb-8 md:pb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
               <AnimatePresence mode="wait">
                 {activeBranch && (
                   <motion.div

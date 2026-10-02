@@ -4,7 +4,10 @@ export default function PageHeader({ eyebrow, title, subtitle }) {
   return (
     <section className="relative pt-40 pb-20 bg-hero-gradient overflow-hidden">
       <div className="absolute inset-0 bg-grid-glow pointer-events-none" />
-      <div className="container-max px-6 md:px-10 lg:px-20 relative z-10">
+      {/* Background soft cyan glow highlights */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#12BFD1]/15 blur-[130px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-10 w-80 h-80 bg-[#A1E7F0]/25 blur-[120px] rounded-full pointer-events-none" />
+      <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

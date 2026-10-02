@@ -1,264 +1,339 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  Clock,
-  Monitor,
-  CheckCircle2,
-  Sparkles,
-  Award,
+  ChevronLeft,
   ChevronRight,
+  ArrowUpRight,
+  ShieldCheck,
+  Award,
+  GraduationCap,
   Star,
-  BookOpen
 } from "lucide-react";
-import RevealOnScroll from "../RevealOnScroll";
-import MagneticButton from "../MagneticButton";
 import { getCourseImage } from "../../config/courseImages";
 
-const coursesData = [
+export const programsData = [
   {
-    id: "01",
-    name: "CPC — Certified Professional Coder",
-    category: "AAPC Certification",
+    id: "cpc",
+    tag: "CPC",
+    title: "Certified Professional Coder",
     slug: "cpc-certification",
-    tagline: "Master AAPC CPC exam preparation with live chart coding, CPT, ICD-10-CM & HCPCS guidelines.",
+    rating: 5,
     duration: "3 Months",
-    format: "Online & Classroom",
-    badge: "Most Popular AAPC Track",
-    rating: "4.9 ★ (12,400+ Students)",
+    methodLabel: "Method of Training Available",
+    methodDetails: "Online & Offline Classroom Training",
     image: getCourseImage("cpc-certification"),
-    highlights: ["CPT & ICD-10-CM Medical Coding", "100+ Live Mock Exam Drills", "AAPC Exam Voucher & Retake Support"]
+    highlightColor: "cyan",
+    icon: ShieldCheck,
   },
   {
-    id: "02",
-    name: "CCS — Certified Coding Specialist",
-    category: "AHIMA Certification",
-    slug: "ccs-certification",
-    tagline: "Hospital inpatient DRG coding & AHIMA CCS certification training for complex clinical charts.",
-    duration: "4 Months",
-    format: "Classroom & Live Online",
-    badge: "Inpatient Hospital Specialist",
-    rating: "4.8 ★ (8,900+ Students)",
-    image: getCourseImage("ccs-certification"),
-    highlights: ["ICD-10-PCS Inpatient Coding", "DRG Grouping & Clinical Auditing", "Hospital Medical Record Review"]
-  },
-  {
-    id: "03",
-    name: "HCC Risk Adjustment Coding",
-    category: "Specialty Training",
-    slug: "hcc-risk-adjustment",
-    tagline: "Specialized Risk Adjustment coding for Medicare Advantage & US healthcare analytics.",
-    duration: "2 Months",
-    format: "Online Interactive",
-    badge: "High Growth Specialty",
-    rating: "4.9 ★ (6,200+ Students)",
-    image: getCourseImage("hcc-risk-adjustment"),
-    highlights: ["RAF Score & CMS Guidelines", "Chart Auditing & Compliance", "Medicare Advantage Analytics"]
-  },
-  {
-    id: "04",
-    name: "Medical Billing & Denial Management",
-    category: "Revenue Cycle",
-    slug: "medical-billing-denial-management",
-    tagline: "Master RCM revenue cycle management, claims scrubbing, and denial resolution for BPO roles.",
-    duration: "2.5 Months",
-    format: "Online & Offline",
-    badge: "RCM Career Track",
-    rating: "4.8 ★ (5,100+ Students)",
-    image: getCourseImage("medical-billing-denial-management"),
-    highlights: ["Claims Scrubbing & AR Follow-up", "Denial Management Strategies", "HIPAA & Billing Software"]
-  },
-  {
-    id: "05",
-    name: "Medical Coding Foundation Program",
-    category: "Foundation Track",
-    slug: "medical-coding-foundation",
-    tagline: "Essential human anatomy, medical terminology, and ICD-10 basics for beginners.",
-    duration: "1.5 Months",
-    format: "Classroom Training",
-    badge: "Beginner Friendly",
-    rating: "4.9 ★ (15,000+ Graduates)",
-    image: getCourseImage("medical-coding-foundation"),
-    highlights: ["Human Anatomy & Physiology 3D", "Medical Terminology Mastery", "ICD-10-CM Coding Fundamentals"]
-  },
-  {
-    id: "06",
-    name: "Advanced E/M & Surgical Coding",
-    category: "Specialty Training",
+    id: "surgery",
+    tag: "SD",
+    title: "Surgery Department",
     slug: "advanced-em-surgery-coding",
-    tagline: "Specialty coding course for Evaluation & Management guidelines and complex surgical procedures.",
-    duration: "3 Months",
-    format: "Online Interactive",
-    badge: "Advanced Level",
-    rating: "4.9 ★ (4,800+ Students)",
+    rating: 5,
+    duration: "2 Months",
+    methodLabel: "Method of Training Available",
+    methodDetails: "Online & Hybrid Specialty Batches",
     image: getCourseImage("advanced-em-surgery-coding"),
-    highlights: ["Operative Report Coding", "E/M Audit Guidelines 2024", "Complex Surgical Modifiers"]
-  }
+    highlightColor: "pink",
+    icon: GraduationCap,
+  },
+  {
+    id: "cic",
+    tag: "CIC",
+    title: "Certified Inpatient Coder",
+    slug: "cic-certification",
+    rating: 5,
+    duration: "3 Months",
+    methodLabel: "Method of Training Available",
+    methodDetails: "Online & Offline Regular Classroom",
+    image: getCourseImage("cic-certification"),
+    highlightColor: "cyan",
+    icon: Award,
+  },
+  {
+    id: "anesthesia",
+    tag: "AD",
+    title: "Anesthesia Department",
+    slug: "anesthesia-coding",
+    rating: 5,
+    duration: "2 Months",
+    methodLabel: "Eligibility",
+    methodDetails: "Life Science Graduates & Coders",
+    image: getCourseImage("anesthesia-coding"),
+    highlightColor: "pink",
+    icon: ShieldCheck,
+  },
+  {
+    id: "ccs",
+    tag: "CCS",
+    title: "Certified Coding Specialist",
+    slug: "ccs-certification",
+    rating: 5,
+    duration: "3 Months",
+    methodLabel: "Method of Training Available",
+    methodDetails: "AHIMA Exam Focused Training",
+    image: getCourseImage("ccs-certification"),
+    highlightColor: "cyan",
+    icon: Award,
+  },
+  {
+    id: "ed",
+    tag: "ED",
+    title: "Emergency Department",
+    slug: "ed-coding",
+    rating: 5,
+    duration: "2 Months",
+    methodLabel: "Method of Training Available",
+    methodDetails: "Online & Classroom Practice",
+    image: getCourseImage("ed-coding"),
+    highlightColor: "pink",
+    icon: GraduationCap,
+  },
+  {
+    id: "hcc",
+    tag: "HCC",
+    title: "HCC Risk Adjustment",
+    slug: "hcc-risk-adjustment",
+    rating: 5,
+    duration: "2 Months",
+    methodLabel: "Eligibility",
+    methodDetails: "Medical Coders & Healthcare Pros",
+    image: getCourseImage("hcc-risk-adjustment"),
+    highlightColor: "cyan",
+    icon: ShieldCheck,
+  },
+  {
+    id: "radiology",
+    tag: "RAD",
+    title: "Radiology Department",
+    slug: "radiology-coding",
+    rating: 5,
+    duration: "2 Months",
+    methodLabel: "Method of Training Available",
+    methodDetails: "Specialty Diagnostic Coding",
+    image: getCourseImage("radiology-coding"),
+    highlightColor: "pink",
+    icon: Award,
+  },
 ];
 
 export default function CoursesPreview() {
-  const [activeIdx, setActiveIdx] = useState(0);
-  const activeCourse = coursesData[activeIdx];
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (!scrollRef.current) return;
+    const distance = direction === "left" ? -360 : 360;
+    scrollRef.current.scrollBy({ left: distance, behavior: "smooth" });
+  };
 
   return (
-    <section className="py-24 bg-[#0B192C] text-white relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-gradient-to-b from-[#F8FBFF] via-[#EBF4FC] to-[#F3F8FE] relative overflow-hidden">
       
-      {/* Background Ambient Glows */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 rounded-full bg-[#16ADBA]/20 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-96 h-96 rounded-full bg-teal-500/20 blur-3xl pointer-events-none" />
+      {/* Animated Light Orb 1 - Cyan Glow */}
+      <motion.div
+        animate={{
+          x: [0, 40, -20, 0],
+          y: [0, -35, 25, 0],
+          scale: [1, 1.15, 0.95, 1],
+        }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-40 -left-32 w-[520px] h-[520px] rounded-full bg-[#12BFD1]/18 blur-[130px] pointer-events-none"
+      />
 
-      <div className="container-max px-6 sm:px-10 lg:px-16 relative z-10 space-y-12">
+      {/* Animated Light Orb 2 - Deep Navy Glow */}
+      <motion.div
+        animate={{
+          x: [0, -50, 30, 0],
+          y: [0, 45, -20, 0],
+          scale: [1, 1.2, 0.9, 1],
+        }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-40 -right-32 w-[580px] h-[580px] rounded-full bg-[#063B7A]/12 blur-[150px] pointer-events-none"
+      />
+
+      {/* Animated Light Orb 3 - Soft Gold Pulse Center */}
+      <motion.div
+        animate={{
+          opacity: [0.25, 0.55, 0.25],
+          scale: [0.85, 1.15, 0.85],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full bg-[#F3C853]/10 blur-[160px] pointer-events-none"
+      />
+
+      {/* Animated Diagonal Light Sheen Sweep */}
+      <motion.div
+        animate={{
+          x: ["-120%", "220%"],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "linear",
+          repeatDelay: 5,
+        }}
+        className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-30deg] pointer-events-none"
+      />
+
+      {/* Floating Ambient Glowing Particles / Nodes */}
+      {[
+        { top: "12%", left: "8%", delay: 0, duration: 6, size: "w-2.5 h-2.5" },
+        { top: "22%", left: "88%", delay: 2, duration: 8, size: "w-3 h-3" },
+        { top: "68%", left: "12%", delay: 1, duration: 7, size: "w-2 h-2" },
+        { top: "78%", left: "82%", delay: 3, duration: 9, size: "w-3 h-3" },
+        { top: "42%", left: "48%", delay: 1.5, duration: 8.5, size: "w-2.5 h-2.5" },
+        { top: "85%", left: "35%", delay: 2.5, duration: 7.5, size: "w-2 h-2" },
+      ].map((particle, idx) => (
+        <motion.div
+          key={idx}
+          style={{ top: particle.top, left: particle.left }}
+          animate={{
+            y: [0, -30, 0],
+            opacity: [0.25, 0.85, 0.25],
+            scale: [0.8, 1.4, 0.8],
+          }}
+          transition={{
+            duration: particle.duration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: particle.delay,
+          }}
+          className={`absolute ${particle.size} rounded-full bg-[#12BFD1]/70 blur-[0.5px] pointer-events-none shadow-[0_0_10px_#12BFD1]`}
+        />
+      ))}
+
+      {/* Subtle Micro Pattern Wash */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none bg-repeat"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%3C%23063B7A%3E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
+
+      <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10 space-y-10">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-2 bg-[#16ADBA]/20 text-teal-300 font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#16ADBA]/30">
-            <Sparkles size={14} className="text-[#16ADBA]" /> Interactive Program Explorer
-          </span>
-
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
-            Explore Certified <span className="text-[#16ADBA]">Medical Coding Tracks</span>
+        {/* Section Header */}
+        <div className="space-y-2">
+          <div className="text-[#12BFD1] font-extrabold text-xs sm:text-sm tracking-[0.25em] uppercase font-display flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#12BFD1] animate-pulse" />
+            THOUGHTFLOWS ACADEMY
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#063B7A] tracking-tight leading-tight font-display">
+            Your Path to Success in Medical Coding
           </h2>
-
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-            Select or hover over any program on the left to preview the curriculum, certification details, and career outcomes.
-          </p>
         </div>
 
-        {/* Dynamic Interactive Split Stage (Non-Card Layout) */}
-        <div className="grid lg:grid-cols-12 gap-8 items-center bg-white/5 backdrop-blur-xl rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
+        {/* Carousel Container */}
+        <div className="relative group">
           
-          {/* Left Column: Interactive Course List / Accordion Tabs */}
-          <div className="lg:col-span-5 space-y-3">
-            {coursesData.map((course, idx) => {
-              const isActive = activeIdx === idx;
+          {/* Left Navigation Arrow */}
+          <button
+            type="button"
+            onClick={() => scroll("left")}
+            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white text-[#063B7A] border border-[#12BFD1]/30 hover:bg-[#12BFD1] hover:text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all cursor-pointer"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Right Navigation Arrow */}
+          <button
+            type="button"
+            onClick={() => scroll("right")}
+            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white text-[#063B7A] border border-[#12BFD1]/30 hover:bg-[#12BFD1] hover:text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all cursor-pointer"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Scrollable Track */}
+          <div
+            ref={scrollRef}
+            className="flex items-stretch gap-6 overflow-x-auto scrollbar-none scroll-smooth pb-8 pt-3 px-2"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {programsData.map((prog) => {
+              const isPink = prog.highlightColor === "pink";
+
               return (
                 <motion.div
-                  key={course.id}
-                  onClick={() => setActiveIdx(idx)}
-                  onMouseEnter={() => setActiveIdx(idx)}
-                  whileHover={{ x: 6 }}
-                  className={`p-4 sm:p-5 rounded-2xl cursor-pointer transition-all duration-300 flex items-center justify-between border ${
-                    isActive
-                      ? "bg-gradient-to-r from-[#16ADBA] to-teal-700 text-white border-teal-400/50 shadow-lg shadow-teal-500/20"
-                      : "bg-white/5 hover:bg-white/10 text-slate-300 border-white/10"
-                  }`}
+                  key={prog.id}
+                  whileHover={{ y: -6 }}
+                  transition={{ duration: 0.3 }}
+                  className="shrink-0 w-[300px] sm:w-[350px] relative bg-white rounded-t-[32px] rounded-bl-[32px] rounded-br-none p-5 sm:p-6 shadow-[0_15px_35px_rgba(6,59,122,0.08)] flex flex-col justify-between border border-white/90 hover:shadow-[0_20px_45px_rgba(18,191,209,0.18)] transition-all duration-300 overflow-hidden group/card"
                 >
-                  <div className="flex items-center gap-4">
-                    <span className={`font-black text-sm ${isActive ? "text-white" : "text-[#16ADBA]"}`}>
-                      {course.id}
-                    </span>
-                    <div>
-                      <h3 className={`font-extrabold text-sm sm:text-base leading-snug ${isActive ? "text-white" : "text-white/90"}`}>
-                        {course.name}
-                      </h3>
-                      <p className={`text-xs mt-0.5 ${isActive ? "text-teal-100" : "text-slate-400"}`}>
-                        {course.category} • {course.duration}
-                      </p>
+                  <div>
+                    {/* Top Image Preview & Badge */}
+                    <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-100 mb-4">
+                      <img
+                        src={prog.image}
+                        alt={prog.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
+                      />
+                      {/* Badge Pill */}
+                      <span className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#063B7A] text-white font-black text-[10px] tracking-widest uppercase shadow-md backdrop-blur-xs">
+                        {prog.tag}
+                      </span>
+                    </div>
+
+                    {/* Course Title */}
+                    <h3 className="font-display font-black text-[#063B7A] text-base sm:text-lg leading-snug tracking-tight uppercase mb-3 line-clamp-2 min-h-[48px]">
+                      {prog.title}
+                    </h3>
+
+                    {/* Star Rating & Training Info */}
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-slate-500 font-bold text-xs">{prog.methodLabel}</span>
+                        <div className="flex items-center gap-0.5 text-amber-400">
+                          {[...Array(prog.rating)].map((_, i) => (
+                            <Star key={i} size={13} className="fill-amber-400 text-amber-400" />
+                          ))}
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-2 text-[#063B7A] font-bold text-xs sm:text-[13px] leading-snug">
+                        <Award className="w-4 h-4 text-[#FF5A60] shrink-0 mt-0.5" />
+                        <span>{prog.methodDetails}</span>
+                      </div>
                     </div>
                   </div>
 
-                  <ChevronRight size={18} className={`transition-transform duration-300 shrink-0 ${isActive ? "translate-x-1 text-white" : "text-white/30"}`} />
+                  {/* Bottom Row: Duration Badge */}
+                  <div className="relative pt-3.5 flex items-center justify-between border-t border-slate-100 mt-2 pr-14">
+                    {/* Duration Badge */}
+                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#F3C853] text-[#4A3300] font-black text-xs shadow-xs">
+                      <span className="text-sm">⌛</span>
+                      <span>{prog.duration}</span>
+                    </div>
+                  </div>
+
+                  {/* Inward S-Curve Corner SVG Cutout Patch */}
+                  <svg
+                    viewBox="0 0 100 100"
+                    className="absolute bottom-0 right-0 w-28 h-28 pointer-events-none text-white fill-current z-10"
+                    aria-hidden="true"
+                  >
+                    <path d="M 0,0 L 100,0 C 100,45 55,45 55,65 C 55,85 35,100 0,100 Z" />
+                  </svg>
+
+                  {/* Circular Action Arrow Button inside Notched Corner */}
+                  <Link
+                    to={`/courses/${prog.slug}`}
+                    className={`absolute bottom-2.5 right-2.5 z-20 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 cursor-pointer ${
+                      isPink
+                        ? "bg-[#FF5A60] text-white hover:bg-[#E0484E]"
+                        : "bg-white border-2 border-[#12BFD1] text-[#12BFD1] hover:bg-[#12BFD1] hover:text-white"
+                    }`}
+                  >
+                    <ArrowUpRight size={22} className="stroke-[2.5]" />
+                  </Link>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Right Column: Dynamic Stage Spotlight Display */}
-          <div className="lg:col-span-7 relative min-h-[460px] sm:min-h-[520px] rounded-3xl overflow-hidden border border-white/15 bg-slate-950 flex flex-col justify-end p-8 sm:p-12">
-            
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCourse.slug}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-                className="absolute inset-0 z-0"
-              >
-                <img
-                  src={activeCourse.image}
-                  alt={activeCourse.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/75 to-navy-950/20" />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Stage Foreground Details */}
-            <div className="relative z-10 space-y-6">
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCourse.slug + "-details"}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4"
-                >
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="bg-[#16ADBA] text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-md">
-                      {activeCourse.badge}
-                    </span>
-                    <span className="bg-white/20 backdrop-blur-md text-teal-200 text-xs font-bold px-3 py-1 rounded-full border border-white/20">
-                      {activeCourse.rating}
-                    </span>
-                  </div>
-
-                  <h3 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
-                    {activeCourse.name}
-                  </h3>
-
-                  <p className="text-slate-200 text-sm sm:text-base leading-relaxed font-normal max-w-xl">
-                    {activeCourse.tagline}
-                  </p>
-
-                  {/* Highlights List */}
-                  <div className="grid sm:grid-cols-2 gap-2 pt-2">
-                    {activeCourse.highlights.map((h) => (
-                      <div key={h} className="flex items-center gap-2 text-xs font-bold text-teal-200">
-                        <CheckCircle2 size={15} className="text-[#16ADBA] shrink-0" />
-                        <span>{h}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* CTAs & Format Chips */}
-                  <div className="pt-4 flex flex-wrap items-center gap-4">
-                    <Link
-                      to={`/courses/${activeCourse.slug}`}
-                      className="bg-[#16ADBA] hover:bg-teal-600 text-white font-extrabold text-sm px-7 py-3.5 rounded-2xl transition-all shadow-lg shadow-teal-500/30 inline-flex items-center gap-2"
-                    >
-                      <span>Explore Full Syllabus</span>
-                      <ArrowRight size={16} />
-                    </Link>
-
-                    <Link
-                      to="/contact"
-                      className="bg-white/10 hover:bg-white/20 text-white font-extrabold text-sm px-6 py-3.5 rounded-2xl transition-all border border-white/20"
-                    >
-                      Enroll Now
-                    </Link>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Ticker Marquee Bottom Bar */}
-        <div className="pt-4 text-center">
-          <Link
-            to="/courses"
-            className="inline-flex items-center gap-2 text-sm font-extrabold text-[#16ADBA] hover:text-teal-300 transition-colors"
-          >
-            <span>Browse Full 49+ Certification Modules Catalog</span>
-            <ArrowRight size={16} />
-          </Link>
         </div>
 
       </div>

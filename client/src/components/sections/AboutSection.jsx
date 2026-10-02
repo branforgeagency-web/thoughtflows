@@ -311,16 +311,15 @@ function VisionMissionSection() {
 
 export function AboutHeroHeader() {
   return (
-    <section className="relative bg-navy-950 text-white py-20 lg:py-28 overflow-hidden">
+    <section className="relative bg-[#F8FCFD] text-[#063B7A] py-20 lg:py-28 overflow-hidden">
       {/* Background Medical Image & Ambient Gradients */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-15">
         <img
           src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1920&q=80"
           alt="Medical Coding & Healthcare Training"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-900/90 to-teal-950/85 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[radial-gradient(#16ADBA_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F8FCFD] via-[#F8FCFD]/80 to-transparent" />
       </div>
 
       <div className="container-max px-6 relative z-10">
@@ -332,9 +331,9 @@ export function AboutHeroHeader() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 font-bold text-xs md:text-sm uppercase tracking-widest px-4 py-1.5 rounded-full border border-teal-400/30 shadow-sm"
+              className="inline-flex items-center gap-2 bg-[#E7F9FB] text-[#12BFD1] font-extrabold text-xs md:text-sm uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#12BFD1]/30 shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#12BFD1] animate-pulse" />
               <span>About Us</span>
             </motion.div>
 
@@ -342,18 +341,18 @@ export function AboutHeroHeader() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight"
+              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#063B7A] leading-tight font-display"
             >
-              Where Healthcare Knowledge Meets <span className="text-teal-400 underline decoration-teal-400/40 underline-offset-8">Career Success</span>
+              Where Healthcare Knowledge Meets <span className="text-[#12BFD1] underline decoration-[#12BFD1]/40 underline-offset-8">Career Success</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-slate-300 text-base md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal"
+              className="text-[#6B7C8F] text-base md:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal"
             >
-              From classroom training to hospital chart practice, our students enjoy interactive, hands-on lessons and are empowered to excel in AAPC & AHIMA medical coding certifications.
+              From classroom training to hospital chart practice, our students enjoy interactive, hands-on lessons and are empowered to excel in AAPC &amp; AHIMA medical coding certifications.
             </motion.p>
 
             {/* CTAs */}
@@ -365,7 +364,7 @@ export function AboutHeroHeader() {
             >
               <a
                 href="#preparing-success"
-                className="inline-flex items-center gap-2.5 bg-teal-500 hover:bg-teal-600 text-white font-bold px-8 py-3.5 rounded-full shadow-lg shadow-teal-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-teal-500/50 active:scale-95 text-base"
+                className="inline-flex items-center gap-2.5 bg-[#063B7A] hover:bg-[#0B4F9C] text-white font-extrabold px-8 py-3.5 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 active:scale-95 text-base"
               >
                 <span>See More</span>
                 <ArrowRight size={18} />
@@ -373,7 +372,7 @@ export function AboutHeroHeader() {
 
               <a
                 href="/courses"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-bold px-7 py-3.5 rounded-full border border-white/20 backdrop-blur-md transition-all duration-300 transform hover:-translate-y-1 text-base"
+                className="inline-flex items-center gap-2 bg-white hover:bg-[#E7F9FB] text-[#063B7A] font-extrabold px-7 py-3.5 rounded-full border border-[#12BFD1]/30 transition-all duration-300 transform hover:-translate-y-1 text-base shadow-sm"
               >
                 <span>Explore Programs</span>
               </a>
@@ -407,7 +406,7 @@ export function AboutHeroHeader() {
             className="lg:col-span-5 relative"
           >
             {/* Ambient Background Glow */}
-            <div className="absolute -inset-4 rounded-[40px] bg-teal-500/20 blur-3xl pointer-events-none" />
+            <div className="absolute -inset-4 rounded-[40px] bg-[#12BFD1]/20 blur-3xl pointer-events-none" />
 
             {/* Main Visual Showcase Image */}
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 bg-slate-900 group">

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThoughtFlows | Start Your Medical Coding Career</title>
+<meta name="description" content="Gain industry-relevant medical coding skills, earn globally recognized AAPC & AHIMA certifications and step into a rewarding career in healthcare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b1026;
+    --muted:#4a5270;
+    --blue:#2f6bff;
+    --violet:#7b3fe4;
+    --cyan:#1fb6ff;
+    --line:#e3e7f5;
+    --card:#ffffff;
+    --bg1:#f7f8fe;
+    --bg2:#eef1fc;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);background:var(--bg1);overflow-x:hidden}
+  a{text-decoration:none;color:inherit}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 55% at 80% 20%, #e6ebff 0%, transparent 70%),
+      radial-gradient(ellipse 50% 50% at 10% 90%, #f1e9ff 0%, transparent 70%),
+      linear-gradient(180deg,#fbfbff 0%, var(--bg2) 100%);
+  }
+  /* soft office backdrop (swap with a real blurred photo if you like) */
+  .hero::before{
+    content:"";position:absolute;right:-5%;top:-10%;width:60%;height:70%;
+    background:url('assets/hero-bg.jpg') center/cover no-repeat;
+    opacity:.35;filter:blur(3px);
+    -webkit-mask-image:radial-gradient(ellipse at 70% 30%, #000 30%, transparent 75%);
+            mask-image:radial-gradient(ellipse at 70% 30%, #000 30%, transparent 75%);
+    pointer-events:none;
+  }
+  .wrap{position:relative;z-index:1;width:100%;max-width:1280px;margin:0 auto;padding:60px 48px;
+    display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:center}
+
+  /* ----- Left ----- */
+  .pill{display:inline-flex;align-items:center;gap:10px;background:#e9eeff;border:1px solid #dbe3ff;
+    color:#3a55c9;font-size:13px;font-weight:500;padding:8px 16px;border-radius:40px;margin-bottom:28px}
+  .pill svg{width:18px;height:18px}
+  .pill .dot{width:4px;height:4px;border-radius:50%;background:#3a55c9;display:inline-block}
+  h1{font-size:clamp(38px,4.6vw,64px);line-height:1.12;font-weight:800;letter-spacing:-1.5px}
+  h1 .grad{background:linear-gradient(90deg,#4f6bff 0%,#3b8bff 50%,#1fb6ff 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin-top:22px;font-size:18px;line-height:1.6;color:var(--muted);max-width:480px}
+  .ctas{display:flex;gap:18px;margin-top:32px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:16px;padding:16px 30px;border-radius:12px;transition:.25s}
+  .btn-primary{color:#fff;background:linear-gradient(90deg,#2f7bff,#8a3ff0);box-shadow:0 10px 25px -8px rgba(90,70,240,.55)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -8px rgba(90,70,240,.7)}
+  .btn-outline{color:#2f55d4;border:1.5px solid #3b63e6;background:#fff}
+  .btn-outline:hover{background:#f0f4ff}
+  .stats{display:flex;gap:0;margin-top:38px;flex-wrap:wrap}
+  .stat{display:flex;align-items:center;gap:12px;padding-right:22px;margin-right:22px;border-right:1px solid #d7dcee}
+  .stat:last-child{border:none;margin:0;padding:0}
+  .stat .ic{width:40px;height:40px;border-radius:50%;background:#e7ebff;display:grid;place-items:center;color:#3f5bd8}
+  .stat .ic.v{background:#efe7ff;color:#7b3fe4}
+  .stat .ic svg{width:20px;height:20px}
+  .stat b{display:block;font-size:20px;font-weight:800}
+  .stat span{font-size:12px;color:var(--muted);line-height:1.3}
+  .hand{font-family:'Caveat',cursive;color:#3040a8;font-size:24px;line-height:1.05;margin-top:40px;margin-left:48px;position:relative;display:inline-block}
+  .hand svg{position:absolute;right:-50px;top:-4px;width:44px}
+
+  /* ----- Right ----- */
+  .visual{position:relative;height:640px}
+  .video-card{position:absolute;left:0;top:60px;width:72%;aspect-ratio:16/12.5;border-radius:26px;overflow:hidden;
+    background:#1b2233;border:6px solid rgba(255,255,255,.85);box-shadow:0 30px 60px -20px rgba(30,40,90,.35)}
+  .video-card video{width:100%;height:100%;object-fit:cover;display:block}
+  .video-card .tag{position:absolute;left:26px;top:30px;font-family:'Caveat',cursive;color:#fff;font-size:26px;line-height:1;
+    transform:rotate(-8deg);text-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none}
+  .video-card .tag svg{display:block;width:90px;margin-top:4px}
+  .play-big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;
+    background:#fff;border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.25s}
+  .play-big:hover{transform:translate(-50%,-50%) scale(1.07)}
+  .play-big svg{width:30px;height:30px;margin-left:5px}
+  .video-card.playing .play-big{opacity:0;pointer-events:none}
+  .controls{position:absolute;left:0;right:0;bottom:0;padding:18px 24px;display:flex;align-items:center;gap:16px;
+    background:linear-gradient(0deg,rgba(0,0,0,.55),transparent);color:#fff;font-size:13px}
+  .controls button{background:none;border:none;color:#fff;cursor:pointer;display:grid;place-items:center}
+  .controls svg{width:18px;height:18px}
+  .bar{flex:1;height:4px;background:rgba(255,255,255,.35);border-radius:4px;position:relative;cursor:pointer}
+  .bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:4px}
+  .bar .knob{position:absolute;top:50%;left:0;width:14px;height:14px;background:#fff;border-radius:50%;transform:translate(-50%,-50%)}
+
+  .features{position:absolute;right:0;top:40px;display:flex;flex-direction:column;gap:14px;width:38%;white-space:nowrap;z-index:2}
+  .feat{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:14px;padding:12px 16px;
+    box-shadow:0 10px 25px -12px rgba(30,40,90,.25);border:1px solid #eef0f8;transition:.25s}
+  .feat:hover{transform:translateX(-4px)}
+  .feat:nth-child(2){margin-left:10px}.feat:nth-child(3){margin-left:14px}.feat:nth-child(4){margin-left:12px}
+  .feat .fi{flex:none;width:44px;height:44px;border-radius:10px;display:grid;place-items:center}
+  .feat .fi svg{width:26px;height:26px}
+  .feat p{flex:1;font-size:13.5px;font-weight:600;line-height:1.35}
+  .feat p small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+  .feat .arr{color:#9aa2bf;font-size:16px}
+  .g{background:#e3f7ec}.b{background:#e3ecff}.p{background:#efe6ff}.o{background:#ffeede}
+
+  .bottom-cards{position:absolute;left:0;bottom:30px;display:flex;gap:18px;z-index:2;width:62%}
+  .bc{flex:1;background:rgba(255,255,255,.9);border-radius:24px;padding:18px 12px;text-align:center;
+    box-shadow:0 14px 30px -14px rgba(30,40,90,.3);font-size:13px;font-weight:600;line-height:1.35}
+  .bc svg{width:36px;height:36px;display:block;margin:0 auto 10px}
+  .bc.t1{background:linear-gradient(160deg,#e6f8f2,#fff)} .bc.t3{background:linear-gradient(160deg,#fff0e2,#fff)}
+
+  .globe{position:absolute;right:30px;bottom:-40px;width:220px;height:220px;z-index:1}
+  .opp{position:absolute;right:0;bottom:170px;font-family:'Caveat',cursive;color:#3040a8;font-size:24px;line-height:1;transform:rotate(-8deg);z-index:2;text-align:right}
+  .plane{position:absolute;right:240px;bottom:200px;width:30px;color:#3b63e6;z-index:2}
+  .dash{position:absolute;pointer-events:none;z-index:0}
+
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  .features .feat{animation:floaty 5s ease-in-out infinite}
+  .features .feat:nth-child(2){animation-delay:.6s}.features .feat:nth-child(3){animation-delay:1.2s}.features .feat:nth-child(4){animation-delay:1.8s}
+
+  /* ----- Responsive ----- */
+  @media(max-width:1024px){
+    .wrap{grid-template-columns:1fr;padding:40px 24px}
+    .visual{height:auto;display:flex;flex-direction:column;gap:18px}
+    .video-card,.features,.bottom-cards,.globe,.opp,.plane{position:relative;inset:auto;width:100%}
+    .features{flex-direction:row;flex-wrap:wrap}
+    .feat{flex:1 1 45%;margin:0!important}
+    .globe,.opp,.plane,.dash{display:none}
+  }
+  @media(max-width:560px){
+    .feat{flex:1 1 100%}
+    .bottom-cards{flex-direction:column}
+    .stat{border:none;margin:0 0 14px;padding:0;width:50%}
+    .hand{margin-left:0}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+
+    <!-- ========== LEFT ========== -->
+    <div class="left">
+      <div class="pill">
+        <svg viewBox="0 0 24 24" fill="#3a55c9"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zm-7 9.2V16c0 2 3.1 4 7 4s7-2 7-4v-3.8l-7 3.8-7-3.8z"/></svg>
+        Career in Healthcare <span class="dot"></span> Learn <span class="dot"></span> Get Certified <span class="dot"></span> Get Placed
+      </div>
+
+      <h1>Start Your<br><span class="grad">Medical Coding</span><br>Career with Us</h1>
+
+      <p class="lead">Gain industry-relevant skills, earn globally recognized certifications and step into a rewarding career in healthcare.</p>
+
+      <div class="ctas">
+        <a href="#" class="btn btn-primary" id="watchBtn">Watch Our Video
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></a>
+        <a href="#courses" class="btn btn-outline">Explore Courses</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM9 13c-3.3 0-7 1.7-7 4v2h14v-2c0-2.3-3.7-4-7-4zm7 0c-.5 0-1 0-1.5.1 1.5.9 2.5 2.2 2.5 3.9v2h5v-2c0-2.2-3.4-4-6-4z"/></svg></div>
+          <div><b>10K+</b><span>Students<br>Trained</span></div>
+        </div>
+        <div class="stat">
+          <div class="ic v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg></div>
+          <div><b>95%</b><span>Course<br>Completion</span></div>
+        </div>
+        <div class="stat">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 3h4a2 2 0 0 1 2 2v2h4a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4V5a2 2 0 0 1 2-2zm0 4h4V5h-4v2z"/></svg></div>
+          <div><b>85%</b><span>Placement<br>Support</span></div>
+        </div>
+      </div>
+
+      <div class="hand">Your Skills<br>&nbsp;&nbsp;Our Support<br>&nbsp;&nbsp;&nbsp;A Brighter Tomorrow
+        <svg viewBox="0 0 50 40" fill="none" stroke="#6a5be0" stroke-width="2" stroke-linecap="round"><path d="M4 36c14 0 30-10 38-28"/><path d="M34 10l8-2 1 8"/></svg>
+      </div>
+    </div>
+
+    <!-- ========== RIGHT ========== -->
+    <div class="visual">
+
+      <!-- dashed connectors -->
+      <svg class="dash" style="left:-30px;bottom:40px;width:100%;height:200px" viewBox="0 0 600 200" fill="none" stroke="#b7c2e8" stroke-width="1.5" stroke-dasharray="5 6">
+        <path d="M30 20c-20 60 10 140 90 150"/><path d="M430 180c60 10 110-30 150-90"/>
+      </svg>
+
+      <!-- VIDEO — replace src / poster with your own files -->
+      <div class="video-card" id="videoCard">
+        <video id="heroVideo" poster="assets/video-poster.jpg" preload="metadata" playsinline>
+          <source src="assets/hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="tag">Real<br>Learning<br>Real Careers
+          <svg viewBox="0 0 90 10" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M2 7c25-5 55-6 86-2"/></svg>
+        </div>
+        <button class="play-big" id="playBig" aria-label="Play video">
+          <svg viewBox="0 0 24 24" fill="#0b1026"><path d="M6 4l14 8-14 8z"/></svg>
+        </button>
+        <div class="controls">
+          <button id="playSmall" aria-label="Play/Pause"><svg viewBox="0 0 24 24" fill="#fff" id="psIcon"><path d="M6 4l14 8-14 8z"/></svg></button>
+          <div class="bar" id="bar"><div class="fill" id="fill"></div><div class="knob" id="knob"></div></div>
+          <span id="time">00:00 / 00:00</span>
+          <button id="fs" aria-label="Fullscreen"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="features">
+        <a href="#" class="feat"><div class="fi g"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.5 8 11 4.6-1.5 8-6 8-11V5l-8-3z" fill="#22a55b"/><path d="M12 8v5m0 3h.01" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></div><p>AAPC &amp; AHIMA<small>Preparation</small></p><span class="arr">→</span></a>
+        <a href="#" class="feat"><div class="fi b"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2" fill="#2f6bff"/><path d="M10 8v5l4-2.5z" fill="#fff"/><path d="M8 21h8M12 17v4" stroke="#2f6bff" stroke-width="2"/></svg></div><p>Live &amp; Recorded<small>Classes</small></p><span class="arr">→</span></a>
+        <a href="#" class="feat"><div class="fi p"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="#7b3fe4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z" fill="#7b3fe4"/></svg></div><p>Expert Trainers<small>&amp; Mentorship</small></p><span class="arr">→</span></a>
+        <a href="#" class="feat"><div class="fi o"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" fill="#f07a2a"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" stroke="#f07a2a" stroke-width="2" fill="none"/><path d="M2 12h20" stroke="#fff" stroke-width="1.5"/></svg></div><p>Placement<small>Assistance</small></p><span class="arr">→</span></a>
+      </div>
+
+      <!-- Bottom cards -->
+      <div class="bottom-cards">
+        <div class="bc t1"><svg viewBox="0 0 24 24" fill="none" stroke="#159a8a" stroke-width="1.8" stroke-linecap="round"><path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a4 4 0 0 0 8 0v-2"/><circle cx="19" cy="12" r="2"/></svg>Real<br>Case Studies</div>
+        <div class="bc"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#8b5cf6"/><path d="M8 11h8M8 15h8M8 19h5" stroke="#fff" stroke-width="1.6"/></svg>Practice with<br>Coding Scenarios</div>
+        <div class="bc t3"><svg viewBox="0 0 24 24"><rect x="4" y="14" width="3" height="7" fill="#f07a2a"/><rect x="10" y="10" width="3" height="11" fill="#f07a2a"/><rect x="16" y="6" width="3" height="15" fill="#f07a2a"/><path d="M3 11l6-5 4 3 7-6" stroke="#f07a2a" stroke-width="1.8" fill="none"/></svg>Build a<br>Global Career</div>
+      </div>
+
+      <!-- Globe + annotations -->
+      <div class="opp">Opportunities<br>&nbsp;&nbsp;Across the Globe</div>
+      <svg class="plane" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(60 12 12)"/></svg>
+      <svg class="globe" viewBox="0 0 220 220">
+        <defs>
+          <radialGradient id="gg" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d8e2ff"/></radialGradient>
+          <pattern id="dots" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#9fb2ec"/></pattern>
+          <clipPath id="gc"><circle cx="110" cy="110" r="100"/></clipPath>
+        </defs>
+        <circle cx="110" cy="110" r="100" fill="url(#gg)"/>
+        <g clip-path="url(#gc)" fill="url(#dots)">
+          <path d="M40 60c20-15 50-10 60 5s-5 30-20 35-15 25-30 20-25-45-10-60z"/>
+          <path d="M120 40c25-5 55 10 65 30s-10 25-25 20-20 15-35 5-25-50-5-55z"/>
+          <path d="M110 120c15-5 35 5 38 25s-10 40-25 45-25-15-25-35 2-30 12-35z"/>
+          <path d="M165 120c15 0 30 15 25 30s-20 10-28 0-12-30 3-30z"/>
+        </g>
+        <g fill="#2f55d4"><path d="M72 88c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9z"/><circle cx="72" cy="97" r="3" fill="#fff"/>
+        <path d="M160 70c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9z"/><circle cx="160" cy="79" r="3" fill="#fff"/></g>
+        <path d="M72 100 Q115 50 160 80" stroke="#2f55d4" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script>
+  const v=document.getElementById('heroVideo'),card=document.getElementById('videoCard'),
+        fill=document.getElementById('fill'),knob=document.getElementById('knob'),
+        bar=document.getElementById('bar'),time=document.getElementById('time'),ps=document.getElementById('psIcon');
+  const PLAY='<path d="M6 4l14 8-14 8z"/>',PAUSE='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+  const fmt=s=>isNaN(s)?'00:00':String(Math.floor(s/60)).padStart(2,'0')+':'+String(Math.floor(s%60)).padStart(2,'0');
+  const toggle=()=>v.paused?v.play():v.pause();
+  document.getElementById('playBig').onclick=toggle;
+  document.getElementById('playSmall').onclick=toggle;
+  v.onclick=toggle;
+  document.getElementById('watchBtn').onclick=e=>{e.preventDefault();card.scrollIntoView({behavior:'smooth',block:'center'});v.play();};
+  v.onplay=()=>{card.classList.add('playing');ps.innerHTML=PAUSE};
+  v.onpause=()=>{card.classList.remove('playing');ps.innerHTML=PLAY};
+  const upd=()=>{const p=(v.currentTime/v.duration)*100||0;fill.style.width=p+'%';knob.style.left=p+'%';time.textContent=fmt(v.currentTime)+' / '+fmt(v.duration)};
+  v.ontimeupdate=upd;v.onloadedmetadata=upd;
+  bar.onclick=e=>{const r=bar.getBoundingClientRect();v.currentTime=((e.clientX-r.left)/r.width)*v.duration};
+  document.getElementById('fs').onclick=()=>card.requestFullscreen?.();
+</script>
+</body>
+</html>

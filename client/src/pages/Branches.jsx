@@ -117,10 +117,14 @@ export default function Branches() {
                   {/* Card Header Image Showcase */}
                   <div className="relative h-52 overflow-hidden bg-slate-900">
                     <img
-                      src={branch.img || branch.heroImage}
+                      src={branch.img || branch.heroImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"}
                       alt={`${branch.name} Campus`}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/30 to-transparent" />
                     

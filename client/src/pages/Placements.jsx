@@ -141,7 +141,7 @@ export default function Placements() {
           </span>
         </div>
 
-        <div className="container-max px-6 sm:px-10 lg:px-16 relative z-10 text-center space-y-4">
+        <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10 text-center space-y-4">
           <span className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border border-teal-400/30">
             <Sparkles size={14} className="text-teal-400" /> 100% Placement Record
           </span>
@@ -172,7 +172,7 @@ export default function Placements() {
       {/* 2. SUB-HEADING INTRO BLOCK                                         */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-16 bg-white text-center border-b border-slate-200/60">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-4xl mx-auto space-y-4">
+        <div className="container-max px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto space-y-4">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#16ADBA] tracking-tight">
             Success Stories of Students Placed in Top Companies
           </h2>
@@ -187,7 +187,7 @@ export default function Placements() {
       {/* 3. OUR PLACED STUDENTS DIRECTORY                                   */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-20">
-        <div className="container-max px-6 sm:px-10 lg:px-16 space-y-12">
+        <div className="container-max px-6 sm:px-8 lg:px-12 space-y-12">
           
           <div className="text-center space-y-4 max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-extrabold text-navy-900 tracking-tight">
@@ -281,7 +281,7 @@ export default function Placements() {
       {/* 4. PREVIOUS YEAR PLACEMENTS                                        */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-20 bg-white border-t border-b border-slate-200/60">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-5xl mx-auto text-center space-y-12">
+        <div className="container-max px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto text-center space-y-12">
           <div className="space-y-3">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
               Previous Year Placements
@@ -312,7 +312,7 @@ export default function Placements() {
       {/* 5. WHERE DO OUR STUDENTS WORK? (HIRING PARTNERS)                    */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-20">
-        <div className="container-max px-6 sm:px-10 lg:px-16 text-center space-y-12">
+        <div className="container-max px-6 sm:px-8 lg:px-12 text-center space-y-12">
           <div className="space-y-3 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-navy-900 tracking-tight">
               Where Do Our Students Work?
@@ -338,7 +338,7 @@ export default function Placements() {
       {/* 6. JOIN OUR MEDICAL CODING TRAINING FORM                           */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-20 bg-white border-t border-slate-200/60">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-6xl mx-auto">
+        <div className="container-max px-6 sm:px-8 lg:px-12 max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-teal-500/10 rounded-3xl border border-amber-200/60 overflow-hidden shadow-2xl grid lg:grid-cols-12 gap-0">
             
             {/* Form Left Side */}

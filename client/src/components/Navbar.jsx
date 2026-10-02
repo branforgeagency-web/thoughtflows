@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronRight, ChevronDown, Search, Phone, Sparkles } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import CourseSearchModal from "./CourseSearchModal";
 
 const courseMegaMenuData = [
   {
@@ -89,6 +90,8 @@ export default function Navbar() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [topBarVisible, setTopBarVisible] = useState(true);
   const [coursesHovered, setCoursesHovered] = useState(false);
   const [branchesHovered, setBranchesHovered] = useState(false);
   const [activeCitySub, setActiveCitySub] = useState(null);
@@ -123,13 +126,43 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-3 bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200/60"
-          : "py-4 bg-gradient-to-b from-navy-950/75 via-navy-950/35 to-transparent"
+          ? "bg-white/95 backdrop-blur-xl shadow-[0_4px_25px_-5px_rgba(6,59,122,0.08)] border-b border-[#063B7A]/8"
+          : "bg-white/90 backdrop-blur-md border-b border-[#063B7A]/5 shadow-[0_2px_15px_-3px_rgba(6,59,122,0.03)]"
       }`}
     >
-      <nav className="container-max flex flex-row flex-nowrap items-center justify-between gap-4 md:gap-6 px-6 md:px-10 lg:px-16">
+      {/* Top Announcement Bar */}
+      {topBarVisible && (
+        <div className="bg-gradient-to-r from-[#063B7A] via-[#0B4F9C] to-[#12BFD1] text-white text-xs font-semibold py-1.5 px-4 border-b border-white/10">
+          <div className="container-max flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5 overflow-hidden whitespace-nowrap">
+              <span className="bg-amber-400 text-slate-900 font-extrabold text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 shadow-xs">
+                New Batch
+              </span>
+              <span className="truncate text-white/95 font-medium">
+                🔥 Next AAPC CPC &amp; CIC Certification Batch Starts Monday! Limited Seats Available
+              </span>
+            </div>
+            <div className="hidden sm:flex items-center gap-4 text-[11px] shrink-0 font-bold">
+              <a href="tel:+919876543210" className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
+                <Phone size={12} />
+                <span>+91 98765 43210</span>
+              </a>
+              <button
+                type="button"
+                onClick={() => setTopBarVisible(false)}
+                className="opacity-70 hover:opacity-100 transition-opacity p-0.5"
+                aria-label="Dismiss banner"
+              >
+                <X size={13} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <nav className="container-max flex flex-row flex-nowrap items-center justify-between gap-4 md:gap-6 px-6 sm:px-8 lg:px-12 py-3.5">
         {/* Brand Logo */}
         <Link
           to="/"
@@ -137,21 +170,19 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
         >
           <img 
-            src={scrolled ? "/thoughtflows.png" : "/thoughtflows-banner.png"} 
+            src="/thoughtflows.png" 
             alt="Thoughtflows" 
             className="h-8 md:h-9 lg:h-10 w-auto object-contain transition-all duration-300" 
           />
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden lg:flex flex-row items-center gap-6 xl:gap-8 shrink-0 flex-nowrap whitespace-nowrap">
+        <div className="hidden lg:flex flex-row items-center gap-6 xl:gap-8 shrink-0 flex-nowrap whitespace-nowrap font-nav">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              `relative py-1 text-base font-bold tracking-tight transition-colors ${
+                isActive ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`
             }
           >
@@ -161,9 +192,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="navUnderline"
-                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                    }`}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -174,10 +203,8 @@ export default function Navbar() {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              `relative py-1 text-base font-bold tracking-tight transition-colors ${
+                isActive ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`
             }
           >
@@ -187,9 +214,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="navUnderline"
-                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                    }`}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -207,21 +232,17 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setCoursesHovered(!coursesHovered)}
-              className={`text-base font-extrabold tracking-wide transition-colors inline-flex items-center gap-1.5 py-1 cursor-pointer outline-none ${
-                scrolled
-                  ? isCoursesActive || coursesHovered ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isCoursesActive || coursesHovered ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              className={`text-base font-bold tracking-tight transition-colors inline-flex items-center gap-1.5 py-1 cursor-pointer outline-none ${
+                isCoursesActive || coursesHovered ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`}
             >
               <span>Courses</span>
-              <ChevronDown size={14} className={`transition-transform duration-300 ${coursesHovered ? "rotate-180 text-teal-500" : ""}`} />
+              <ChevronDown size={14} className={`transition-transform duration-300 ${coursesHovered ? "rotate-180 text-[#12BFD1]" : ""}`} />
             </button>
             {(isCoursesActive || coursesHovered) && (
               <motion.span
                 layoutId="navUnderline"
-                className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                  scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                }`}
+                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
@@ -236,19 +257,19 @@ export default function Navbar() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50 w-[720px] lg:w-[800px]"
                 >
-                  <div className="bg-white rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.18)] p-7 border border-slate-100 grid grid-cols-4 gap-7 text-navy-900">
+                  <div className="bg-white rounded-3xl shadow-[0_25px_60px_rgba(6,59,122,0.12)] p-7 border border-[#12BFD1]/20 grid grid-cols-4 gap-7 text-[#243447]">
                     {courseMegaMenuData.map((cat) => (
                       <div key={cat.category} className="flex flex-col">
-                        <div className="border-b-2 border-[#16ADBA] pb-2 font-bold text-xs uppercase tracking-wider text-navy-900 mb-3.5">
+                        <div className="border-b-2 border-[#12BFD1] pb-2 font-display font-extrabold text-xs uppercase tracking-wider text-[#063B7A] mb-3.5">
                           {cat.category}
                         </div>
-                        <div className="space-y-2 flex-1">
+                        <div className="space-y-2 flex-1 font-nav">
                           {cat.items.map((item) => (
                             <Link
                               key={item.name}
                               to={`/courses/${item.slug}`}
                               onClick={() => setCoursesHovered(false)}
-                              className="block text-xs font-semibold text-slate-700 hover:text-[#16ADBA] hover:translate-x-1 transition-all py-1 tracking-wide"
+                              className="block text-xs font-bold text-[#243447] hover:text-[#12BFD1] hover:translate-x-1 transition-all py-1 tracking-wide"
                             >
                               {item.name}
                             </Link>
@@ -275,21 +296,17 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setBranchesHovered(!branchesHovered)}
-              className={`text-base font-extrabold tracking-wide transition-colors inline-flex items-center gap-1.5 py-1 cursor-pointer outline-none ${
-                scrolled
-                  ? isBranchesActive || branchesHovered ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isBranchesActive || branchesHovered ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              className={`text-base font-bold tracking-tight transition-colors inline-flex items-center gap-1.5 py-1 cursor-pointer outline-none ${
+                isBranchesActive || branchesHovered ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`}
             >
               <span>Branches</span>
-              <ChevronDown size={14} className={`transition-transform duration-300 ${branchesHovered ? "rotate-180 text-teal-500" : ""}`} />
+              <ChevronDown size={14} className={`transition-transform duration-300 ${branchesHovered ? "rotate-180 text-[#12BFD1]" : ""}`} />
             </button>
             {(isBranchesActive || branchesHovered) && (
               <motion.span
                 layoutId="navUnderline"
-                className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                  scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                }`}
+                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                 transition={{ type: "spring", stiffness: 380, damping: 30 }}
               />
             )}
@@ -304,7 +321,7 @@ export default function Navbar() {
                   transition={{ duration: 0.2, ease: "easeOut" }}
                   className="absolute left-0 top-full pt-2 z-50 min-w-[220px]"
                 >
-                  <div className="bg-white rounded-2xl shadow-2xl p-2.5 border border-slate-100 space-y-1 relative">
+                  <div className="bg-white rounded-2xl shadow-2xl p-2.5 border border-[#12BFD1]/20 space-y-1 relative font-nav">
                     {branchMenuData.map((item) => (
                       <div
                         key={item.name}
@@ -312,9 +329,9 @@ export default function Navbar() {
                         onMouseEnter={() => setActiveCitySub(item.name)}
                       >
                         {item.hasSub ? (
-                          <div className="flex items-center justify-between px-4 py-2.5 rounded-xl text-navy-900 font-extrabold text-base hover:bg-teal-50 hover:text-teal-600 cursor-pointer transition-colors group">
+                          <div className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[#063B7A] font-bold text-sm hover:bg-[#E7F9FB] hover:text-[#12BFD1] cursor-pointer transition-colors group">
                             <span>{item.name}</span>
-                            <ChevronRight size={16} className="text-navy-900/50 group-hover:text-teal-600 group-hover:translate-x-0.5 transition-transform" />
+                            <ChevronRight size={16} className="text-[#063B7A]/50 group-hover:text-[#12BFD1] group-hover:translate-x-0.5 transition-transform" />
                           </div>
                         ) : (
                           <Link
@@ -323,7 +340,7 @@ export default function Navbar() {
                               setBranchesHovered(false);
                               setActiveCitySub(null);
                             }}
-                            className="flex items-center justify-between px-4 py-2.5 rounded-xl text-navy-900 font-extrabold text-base hover:bg-teal-50 hover:text-teal-600 transition-colors"
+                            className="flex items-center justify-between px-4 py-2.5 rounded-xl text-[#063B7A] font-bold text-sm hover:bg-[#E7F9FB] hover:text-[#12BFD1] transition-colors"
                           >
                             <span>{item.name}</span>
                           </Link>
@@ -337,9 +354,9 @@ export default function Navbar() {
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: 4 }}
                               transition={{ duration: 0.15 }}
-                              className="absolute left-full top-0 ml-1.5 min-w-[210px] bg-white rounded-2xl shadow-2xl p-2.5 border border-slate-100 z-50 space-y-1"
+                              className="absolute left-full top-0 ml-1.5 min-w-[210px] bg-white rounded-2xl shadow-2xl p-2.5 border border-[#12BFD1]/20 z-50 space-y-1 font-nav"
                             >
-                              <div className="px-3 py-1 text-[10px] font-extrabold uppercase text-teal-600 tracking-wider border-b border-slate-100 mb-1">
+                              <div className="px-3 py-1 text-[10px] font-display font-extrabold uppercase text-[#12BFD1] tracking-wider border-b border-[#063B7A]/10 mb-1">
                                 {item.name} Campuses
                               </div>
                               {item.branches.map((b) => (
@@ -350,7 +367,7 @@ export default function Navbar() {
                                     setBranchesHovered(false);
                                     setActiveCitySub(null);
                                   }}
-                                  className="block px-3.5 py-2 rounded-xl text-sm font-extrabold text-navy-900 hover:bg-teal-50 hover:text-teal-600 transition-colors"
+                                  className="block px-3.5 py-2 rounded-xl text-sm font-bold text-[#063B7A] hover:bg-[#E7F9FB] hover:text-[#12BFD1] transition-colors"
                                 >
                                   {b.name}
                                 </Link>
@@ -369,10 +386,8 @@ export default function Navbar() {
           <NavLink
             to="/placements"
             className={({ isActive }) =>
-              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              `relative py-1 text-base font-bold tracking-tight transition-colors ${
+                isActive ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`
             }
           >
@@ -382,9 +397,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="navUnderline"
-                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                    }`}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -395,10 +408,8 @@ export default function Navbar() {
           <NavLink
             to="/blogs"
             className={({ isActive }) =>
-              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              `relative py-1 text-base font-bold tracking-tight transition-colors ${
+                isActive ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`
             }
           >
@@ -408,9 +419,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="navUnderline"
-                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                    }`}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -421,10 +430,8 @@ export default function Navbar() {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `relative py-1 text-base font-extrabold tracking-wide transition-colors ${
-                scrolled
-                  ? isActive ? "text-teal-600" : "text-navy-900/80 hover:text-navy-900"
-                  : isActive ? "text-teal-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]" : "text-white/90 hover:text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
+              `relative py-1 text-base font-bold tracking-tight transition-colors ${
+                isActive ? "text-[#12BFD1]" : "text-[#063B7A] hover:text-[#12BFD1]"
               }`
             }
           >
@@ -434,9 +441,7 @@ export default function Navbar() {
                 {isActive && (
                   <motion.span
                     layoutId="navUnderline"
-                    className={`absolute -bottom-1 left-0 right-0 h-[3px] rounded-full ${
-                      scrolled ? "bg-teal-600" : "bg-teal-300 drop-shadow-[0_0_8px_rgba(45,212,191,0.8)]"
-                    }`}
+                    className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full bg-[#12BFD1]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -445,23 +450,43 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:flex items-center shrink-0 whitespace-nowrap">
+        {/* CTA & Search Buttons */}
+        <div className="hidden lg:flex items-center gap-3 shrink-0 whitespace-nowrap">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-100 hover:bg-[#E7F9FB] text-[#063B7A] hover:text-[#12BFD1] border border-slate-200 hover:border-[#12BFD1]/30 transition-all font-semibold text-xs shadow-xs cursor-pointer"
+            title="Search courses & branches (Ctrl+K)"
+          >
+            <Search size={15} className="text-[#12BFD1]" />
+            <span>Search...</span>
+            <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-bold text-slate-400 bg-white rounded border border-slate-200 shadow-2xs">Ctrl+K</kbd>
+          </button>
+
           <MagneticButton as={Link} to="/contact" className="!px-6 !py-3 text-sm font-extrabold whitespace-nowrap">
             Enroll Now
           </MagneticButton>
         </div>
 
-        {/* Mobile Hamburger Toggle Button */}
-        <button
-          className={`lg:hidden p-2 transition-colors ${
-            scrolled ? "text-navy-900" : "text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]"
-          }`}
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
+        {/* Mobile Search & Hamburger Toggle Buttons */}
+        <div className="lg:hidden flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="p-2 text-[#063B7A] hover:text-[#12BFD1] transition-colors"
+            aria-label="Search courses"
+          >
+            <Search size={22} />
+          </button>
+
+          <button
+            className="p-2 text-[#063B7A] hover:text-[#12BFD1] transition-colors"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Drawer Menu */}
@@ -580,6 +605,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Spotlight Search Modal */}
+      <CourseSearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

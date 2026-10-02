@@ -155,9 +155,13 @@ export default function BranchDetail() {
             <div className="lg:col-span-5 relative">
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900">
                 <img
-                  src={branch.heroImage}
+                  src={branch.heroImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80"}
                   alt={`Thoughtflows Academy ${branch.name}`}
                   className="w-full h-[320px] sm:h-[400px] object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
                 

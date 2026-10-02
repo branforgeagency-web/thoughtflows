@@ -4,17 +4,20 @@ export default function SectionHeading({ eyebrow, title, subtitle, align = "cent
   const alignment = align === "center" ? "items-center text-center mx-auto" : "items-start text-left";
   return (
     <RevealOnScroll>
-      <div className={`flex flex-col gap-4 max-w-3xl ${alignment} mb-10 md:mb-12`}>
+      <div className={`flex flex-col gap-3.5 max-w-3xl ${alignment} mb-12 md:mb-16`}>
         {eyebrow && (
-          <span className="inline-flex items-center gap-2 text-teal-600 text-xs md:text-sm font-semibold uppercase">
-            <span className="h-px w-8 bg-teal-400" />
-            <span className="tracking-[0.2em] mr-[-0.2em]">{eyebrow}</span>
-            <span className="h-px w-8 bg-teal-400" />
+          <span className="inline-flex items-center gap-2 text-[#12BFD1] text-xs md:text-sm font-extrabold uppercase tracking-widest">
+            <span className="h-px w-8 bg-[#12BFD1]" />
+            <span>{eyebrow}</span>
+            {align === "center" && <span className="h-px w-8 bg-[#12BFD1]" />}
           </span>
         )}
-        <h2 className="text-3xl md:text-5xl font-bold text-navy-900 leading-tight">{title}</h2>
-        {subtitle && <p className="text-navy-900/60 text-base md:text-lg leading-relaxed">{subtitle}</p>}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#063B7A] leading-[1.18] tracking-tight font-display">
+          {title}
+        </h2>
+        {subtitle && <p className="text-[#6B7C8F] text-base md:text-lg leading-relaxed font-normal">{subtitle}</p>}
       </div>
     </RevealOnScroll>
   );
 }
+

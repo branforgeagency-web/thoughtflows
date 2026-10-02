@@ -20,7 +20,7 @@ export default function BlogDetail() {
     <div className="bg-slate-50 min-h-screen">
       {/* Top Header Banner */}
       <section className="bg-gradient-to-b from-navy-950 via-navy-900 to-[#072432] pt-32 pb-20 text-white relative overflow-hidden">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-4xl mx-auto space-y-6 relative z-10 text-left">
+        <div className="container-max px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto space-y-6 relative z-10 text-left">
           <Link
             to="/blogs"
             className="inline-flex items-center gap-2 text-xs font-bold text-teal-300 hover:text-teal-200 transition mb-2"
@@ -63,7 +63,7 @@ export default function BlogDetail() {
 
       {/* Main Article Content */}
       <section className="py-12 md:py-16">
-        <div className="container-max px-6 sm:px-10 lg:px-16 max-w-4xl mx-auto space-y-10">
+        <div className="container-max px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto space-y-10">
           {/* Cover Image */}
           <RevealOnScroll>
             <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-200 h-[320px] sm:h-[420px]">

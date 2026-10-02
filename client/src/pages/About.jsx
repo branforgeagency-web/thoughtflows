@@ -59,7 +59,7 @@ function AboutNavSubBar() {
 
   return (
     <div className="bg-[#16ADBA]/95 backdrop-blur-md text-white py-4 md:py-4.5 shadow-lg sticky top-[72px] z-30 border-b border-white/10">
-      <div className="container-max px-6 md:px-10 lg:px-16 flex flex-wrap justify-between md:justify-around items-center gap-4">
+      <div className="container-max px-6 sm:px-8 lg:px-12 flex flex-wrap justify-between md:justify-around items-center gap-4">
         {navItems.map((item) => {
           const isSelected = activeTab === item.id;
           return (

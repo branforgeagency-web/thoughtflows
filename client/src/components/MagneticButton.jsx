@@ -21,11 +21,12 @@ export default function MagneticButton({ children, as = "button", className = ""
   const handleLeave = () => setPos({ x: 0, y: 0 });
 
   const base =
-    "relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold text-sm md:text-base tracking-wide transition-shadow duration-300 select-none";
+    "relative inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-bold text-sm md:text-base tracking-wide transition-all duration-300 select-none cursor-pointer";
   const variants = {
-    primary: "bg-gradient-to-r from-teal-500 to-teal-600 text-ink-950 shadow-glow hover:shadow-glow-lg",
-    secondary: "glass text-navy-900 hover:bg-navy-900/5",
-    outline: "border border-teal-500/40 text-teal-600 hover:bg-teal-500/10"
+    primary: "bg-gradient-to-r from-[#063B7A] via-[#0B4F9C] to-[#12BFD1] text-white font-extrabold shadow-lg shadow-[#063B7A]/20 hover:shadow-xl hover:shadow-[#12BFD1]/30",
+    cyan: "bg-gradient-to-r from-[#12BFD1] to-[#0EA2B2] hover:from-[#0EA2B2] hover:to-[#0B8A98] text-white font-extrabold shadow-lg shadow-[#12BFD1]/25 hover:shadow-xl hover:shadow-[#12BFD1]/40",
+    secondary: "bg-white text-[#063B7A] font-extrabold border border-[#12BFD1]/30 hover:bg-[#E7F9FB] shadow-sm",
+    outline: "border border-[#063B7A]/30 text-[#063B7A] font-extrabold hover:border-[#12BFD1] hover:text-[#12BFD1] hover:bg-[#E7F9FB]/50"
   };
 
   // motion.<tag> only works for plain DOM tag strings (button, a, div...).

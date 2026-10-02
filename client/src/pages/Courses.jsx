@@ -369,7 +369,7 @@ export default function Courses() {
       {/* 1. HERO HEADER BANNER                                             */}
       {/* ------------------------------------------------------------------ */}
       <section className="relative pt-36 pb-20 bg-gradient-to-r from-navy-950 via-[#0b3347] to-teal-900 text-white overflow-hidden">
-        <div className="container-max px-6 sm:px-10 lg:px-16 relative z-10 text-center space-y-5">
+        <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10 text-center space-y-5">
           <span className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border border-teal-400/30">
             <Sparkles size={14} className="text-teal-400" /> Master Course Directory
           </span>
@@ -435,7 +435,7 @@ export default function Courses() {
       {/* 2. MASTER COURSES DIRECTORY GRID                                  */}
       {/* ------------------------------------------------------------------ */}
       <section className="py-16">
-        <div className="container-max px-6 sm:px-10 lg:px-16 space-y-12">
+        <div className="container-max px-6 sm:px-8 lg:px-12 space-y-12">
           
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
             <h2 className="text-xl sm:text-2xl font-extrabold text-navy-900 flex items-center gap-2">

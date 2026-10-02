@@ -247,7 +247,7 @@ export default function OurTeam() {
       {/* 1. HERO HEADER BANNER                                             */}
       {/* ------------------------------------------------------------------ */}
       <section className="relative pt-36 pb-20 bg-gradient-to-r from-navy-950 via-[#0b3347] to-teal-900 text-white overflow-hidden">
-        <div className="container-max px-6 sm:px-10 lg:px-16 relative z-10 text-center space-y-4">
+        <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10 text-center space-y-4">
           <span className="inline-flex items-center gap-2 bg-teal-500/20 text-teal-300 font-extrabold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full border border-teal-400/30">
             <Users size={14} className="text-teal-400" /> Dedicated Educators & Leaders
           </span>
@@ -293,7 +293,7 @@ export default function OurTeam() {
       {/* ------------------------------------------------------------------ */}
       {/* 2. DEPARTMENTAL TEAM DIRECTORY SECTIONS                            */}
       {/* ------------------------------------------------------------------ */}
-      <div className="container-max px-6 sm:px-10 lg:px-16 py-16 space-y-16">
+      <div className="container-max px-6 sm:px-8 lg:px-12 py-16 space-y-16">
         <AnimatePresence mode="popLayout">
           {displayCategories.map((cat) => (
             <motion.section

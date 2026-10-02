@@ -7,48 +7,40 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-white text-navy-900 font-sans antialiased;
+    @apply bg-[#F8FCFD] text-[#243447] font-sans antialiased selection:bg-[#12BFD1]/20 selection:text-[#063B7A];
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-  }
-  ::selection {
-    @apply bg-teal-500/25 text-navy-900;
+    @apply font-display text-[#063B7A];
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 backdrop-blur-xl border border-navy-900/10 shadow-[0_4px_24px_-8px_rgba(21,63,108,0.10)];
+    @apply bg-white/80 backdrop-blur-xl border border-[#12BFD1]/15 shadow-[0_10px_30px_-10px_rgba(6,59,122,0.06)];
   }
   .glass-strong {
-    @apply bg-white/85 backdrop-blur-2xl border border-navy-900/10 shadow-[0_8px_32px_-8px_rgba(21,63,108,0.14)];
+    @apply bg-white/90 backdrop-blur-2xl border border-[#063B7A]/10 shadow-[0_15px_35px_-10px_rgba(6,59,122,0.09)];
+  }
+  .glass-nav {
+    @apply bg-white/85 backdrop-blur-lg border-b border-[#063B7A]/5 shadow-[0_4px_25px_-5px_rgba(6,59,122,0.04)];
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-600 via-teal-500 to-navy-600;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#063B7A] via-[#0B4F9C] to-[#12BFD1];
+  }
+  .text-gradient-cyan {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#12BFD1] via-[#0EA2B2] to-[#063B7A];
   }
   .section-pad {
-    @apply px-6 md:px-10 lg:px-20 py-12 md:py-16;
+    @apply px-6 sm:px-8 lg:px-12 py-16 md:py-24;
   }
   .container-max {
-    @apply max-w-7xl mx-auto;
+    @apply max-w-[1400px] 2xl:max-w-[1536px] mx-auto;
   }
-}
-
-/* Sections stack directly on top of one another on pages like Home and
-   About with no hero/divider between them — without this, each section's
-   own top+bottom padding compounds into a large empty gap at every
-   boundary. Only collapse the gap between two sections that share the same
-   background, so alternating background colors (and the eyebrow badge at
-   the top of the new band) still get proper breathing room instead of
-   sitting flush against the color seam. */
-.section-pad.bg-white + .section-pad.bg-white,
-.section-pad.bg-slate-50 + .section-pad.bg-slate-50 {
-  padding-top: 0;
 }
 
 /* custom scrollbar */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #0f8f9a; border-radius: 999px; }
-::-webkit-scrollbar-thumb:hover { background: #16adba; }
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #F8FCFD; }
+::-webkit-scrollbar-thumb { background: #12BFD1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #0EA2B2; }
+

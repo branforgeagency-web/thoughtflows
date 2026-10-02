@@ -6,25 +6,27 @@
  * full /branches listing page and /branches/:slug detail page (phone,
  * email, course and batch data).
  */
+export const DEFAULT_BRANCH_IMAGE = "/branch-building.jpg";
+
 function buildBranch(branch) {
   return {
     gallery: [],
     hasStudio: false,
     ...branch,
     slug: branch.id,
-    heroImage: branch.img
+    heroImage: branch.img || DEFAULT_BRANCH_IMAGE
   };
 }
 
 export const CITY_BACKGROUNDS = {
-  coimbatore: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=1200&q=80",
-  hyderabad: "https://images.unsplash.com/photo-1626014903708-691955774b14?auto=format&fit=crop&w=1200&q=80",
-  kochi: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=80",
-  trivandrum: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=1200&q=80",
-  vizag: "https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=1200&q=80",
-  tirupathi: "https://images.unsplash.com/photo-1627894006066-b457865373a3?auto=format&fit=crop&w=1200&q=80",
-  trichy: "https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=1200&q=80",
-  salem: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80"
+  coimbatore: "/branch-building.jpg",
+  hyderabad: "/branch-reception.jpg",
+  kochi: "/branch-classroom.jpg",
+  trivandrum: "/branch-building.jpg",
+  vizag: "/branch-reception.jpg",
+  tirupathi: "/branch-classroom.jpg",
+  trichy: "/branch-building.jpg",
+  salem: "/branch-reception.jpg"
 };
 
 export const BRANCHES = [
@@ -37,13 +39,11 @@ export const BRANCHES = [
     address: 'Jay Enclave, 1084, 3rd St, Cross Cut Road, Gandhipuram, Coimbatore, Tamil Nadu 641012',
     gmapUrl: 'https://maps.app.goo.gl/VDFfTxUovDB8R1E6A',
     mapEmbedUrl: 'https://maps.google.com/maps?q=11.0175821,76.9682749&z=15&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_pod_reception.jpg',
+    img: '/branch-building.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_teal_classroom.jpg', title: 'Teal Chair Classroom' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_blue_classroom.jpg', title: 'Blue Chair Classroom' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_workspace_plants.jpg', title: 'Workspace with Plant Wall' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_cabin_desk.jpg', title: 'Private Cabin Desk' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/gandhipuram_seating_room.jpg', title: 'Seating Room' },
+      { url: '/branch-building.jpg', title: 'Main Academy Building Exterior' },
+      { url: '/branch-classroom.jpg', title: 'High-Tech Computer Training Lab' },
+      { url: '/branch-reception.jpg', title: 'Student Counseling & Reception Lounge' },
     ],
   }),
   buildBranch({
@@ -55,19 +55,11 @@ export const BRANCHES = [
     address: 'Opposite GRG Ladies Hostel, Above Sneha Hospital, Hope College, Peelamedu, Coimbatore, Tamil Nadu 641004',
     gmapUrl: 'https://maps.app.goo.gl/JUknQRYXUoqyBUFn8',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Peelamedu+Hope+College+Coimbatore&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786528296/IMG_6190.png',
+    img: '/branch-classroom.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786528296/IMG_6190.png', title: 'Hope College Workspace' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529634/IMG_6230_-_Copy.heic', title: 'Reception & Welcome Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529199/IMG_6175.jpg', title: 'Workstation & Seating Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529199/IMG_6165.jpg', title: 'Classroom & Training Hall' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529637/IMG_6168.heic', title: 'Seminar & Event Space' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786528296/IMG_6184.png', title: 'Co-Working Lounge' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529632/IMG_6187_-_Copy.heic', title: 'Discussion Nook' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529632/IMG_6188_-_Copy.heic', title: 'Focus Pod & Quiet Desk' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529199/IMG_6180.jpg', title: 'Private Cabin & Desk' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529633/IMG_6220_-_Copy.heic', title: 'Flexible Workstations' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/v1786529633/IMG_6223_-_Copy.heic', title: 'Corridor & Workspace Area' },
+      { url: '/branch-classroom.jpg', title: 'Hope College Computer Classroom' },
+      { url: '/branch-reception.jpg', title: 'Reception & Student Services Desk' },
+      { url: '/branch-building.jpg', title: 'Hope College Campus Building' },
     ],
   }),
   buildBranch({
@@ -79,13 +71,11 @@ export const BRANCHES = [
     address: 'Promenade Tower, 1st Floor, No. 171/2A, Sathy Main Road, Saravanampatti, Coimbatore, Tamil Nadu 641035',
     gmapUrl: 'https://maps.app.goo.gl/desTgkBphapaQwxc8',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Saravanampatti+Coimbatore&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_reception_wide.jpg',
+    img: '/branch-reception.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_reception_plants.jpg', title: 'Reception & Plant Wall' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_meeting_room.jpg', title: 'Meeting Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_cabin.jpg', title: 'Private Cabin' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_reception_nook.jpg', title: 'Reception Nook' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/saravanampatti_corridor.jpg', title: 'Entrance Corridor' },
+      { url: '/branch-reception.jpg', title: 'Promenade Tower Reception Lobby' },
+      { url: '/branch-classroom.jpg', title: 'Medical Coding Workstation Lab' },
+      { url: '/branch-building.jpg', title: 'Saravanampatti Tech Campus' },
     ],
   }),
   buildBranch({
@@ -97,10 +87,11 @@ export const BRANCHES = [
     address: 'C-40, No. 25, 3rd Cross Road, Amil Towers, Thillai Nagar East, Tiruchirappalli, Tamil Nadu 620018',
     gmapUrl: 'https://maps.app.goo.gl/UDcpPgJKjnK2nLgF8',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Trichy+Cantonment&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trichy_pantry_reception.jpg',
+    img: '/branch-building.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trichy_seating_mural.jpg', title: 'Seating Area & Trichy Mural' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trichy_plant_ceiling.jpg', title: 'Hanging Plant Ceiling' },
+      { url: '/branch-building.jpg', title: 'Amil Towers Building Exterior' },
+      { url: '/branch-classroom.jpg', title: 'Trichy Training Classroom' },
+      { url: '/branch-reception.jpg', title: 'Reception Desk' },
     ],
   }),
   buildBranch({
@@ -112,13 +103,11 @@ export const BRANCHES = [
     address: '1st Floor, S Square Towers, Omalur Main Road, Arthanari Nagar, Mamangam, Salem, Tamil Nadu 636302',
     gmapUrl: 'https://maps.app.goo.gl/yzKjhCt24Q88d2aF6',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Five+Roads+Salem&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_classroom.jpg',
+    img: '/branch-classroom.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_classroom.jpg', title: 'Training Classroom Zone' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_coworking.jpg', title: 'Co-Working & Creative Desk Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_entrance.jpg', title: 'Medical Coding Academy Entrance' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_conference.jpg', title: 'Conference & Meeting Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/salem_executive.jpg', title: 'Executive Cabin & Suite' },
+      { url: '/branch-classroom.jpg', title: 'S Square Towers Training Lab' },
+      { url: '/branch-reception.jpg', title: 'Salem Campus Reception' },
+      { url: '/branch-building.jpg', title: 'Salem Building Entrance' },
     ],
   }),
   buildBranch({
@@ -130,9 +119,11 @@ export const BRANCHES = [
     address: '4th floor, Vee Vee Tower, near Bhima Jewels, NH Bye Pass, Edappally, Kochi, Ernakulam, Kerala 682024',
     gmapUrl: 'https://maps.app.goo.gl/5EBy9zmVoEWgQvFG6',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Edappally+Kochi&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/kochi_plant_workstations.jpg',
+    img: '/branch-reception.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/kochi_training_classroom.jpg', title: 'Training Classroom' },
+      { url: '/branch-reception.jpg', title: 'Vee Vee Tower Entrance Lounge' },
+      { url: '/branch-classroom.jpg', title: 'Kochi Medical Coding Studio & Lab' },
+      { url: '/branch-building.jpg', title: 'Edappally Tech Center Building' },
     ],
     hasStudio: true,
   }),
@@ -145,10 +136,11 @@ export const BRANCHES = [
     address: '167, 1st Floor, Karimpanal Arcade, Opp. Padmanabhaswamy Temple, East Fort, Thiruvananthapuram, Kerala 695024',
     gmapUrl: 'https://maps.app.goo.gl/qpobuXhdniRo4KyBA',
     mapEmbedUrl: 'https://maps.google.com/maps?q=East+Fort+Trivandrum&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trivandrum_lounge.jpg',
+    img: '/branch-building.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trivandrum_reception.jpg', title: 'Reception & Cabins' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/trivandrum_workstation.jpg', title: 'Workstation Desk' },
+      { url: '/branch-building.jpg', title: 'Karimpanal Arcade Exterior' },
+      { url: '/branch-classroom.jpg', title: 'Trivandrum Computer Classroom' },
+      { url: '/branch-reception.jpg', title: 'Student Counseling Desk' },
     ],
   }),
   buildBranch({
@@ -160,15 +152,11 @@ export const BRANCHES = [
     address: '7th Floor, IT Grand Palace, 701/A, 1st Lane, Dwaraka Nagar, Visakhapatnam, Andhra Pradesh 530016',
     gmapUrl: 'https://maps.app.goo.gl/8egQEHLdf7DjcwBK8',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Dwaraka+Nagar+Visakhapatnam&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_reception.jpg',
+    img: '/branch-classroom.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_reception.jpg', title: 'Reception' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_classroom_auditorium.jpg', title: 'Classroom / Auditorium Seating' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_conference_room.jpg', title: 'Conference Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_cabin_desks.jpg', title: 'Cabin & Desk Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_cabin_legacy.jpg', title: 'Private Cabin' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_purple_cabin.jpg', title: 'Meeting Nook' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/vizag_entrance_signage.jpg', title: 'Entrance Signage' },
+      { url: '/branch-classroom.jpg', title: 'IT Grand Palace Computer Lab' },
+      { url: '/branch-reception.jpg', title: 'Vizag Campus Reception' },
+      { url: '/branch-building.jpg', title: 'Dwaraka Nagar Tech Tower' },
     ],
   }),
   buildBranch({
@@ -180,13 +168,11 @@ export const BRANCHES = [
     address: 'Korlagunta Main Road, Near Railway Station, Tirupati, Andhra Pradesh 517501',
     gmapUrl: 'https://maps.app.goo.gl/iDBPqZmVWGZ8skE36',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Korlagunta+Tirupati&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593881/WhatsApp_Image_2026-08-13_at_9.31.41_AM_1.jpg',
+    img: '/branch-reception.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593881/WhatsApp_Image_2026-08-13_at_9.31.41_AM_1.jpg', title: 'Reception' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593881/WhatsApp_Image_2026-08-13_at_9.31.44_AM_1.jpg', title: 'Classroom / Auditorium Seating' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593880/WhatsApp_Image_2026-08-13_at_9.31.40_AM_2.jpg', title: 'Conference Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593880/WhatsApp_Image_2026-08-13_at_9.31.40_AM.jpg', title: 'Cabin & Desk Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/v1786593881/WhatsApp_Image_2026-08-13_at_9.31.44_AM.jpg', title: 'Private Cabin' },
+      { url: '/branch-reception.jpg', title: 'Tirupati Reception & Counseling Desk' },
+      { url: '/branch-classroom.jpg', title: 'Tirupati Training Hall' },
+      { url: '/branch-building.jpg', title: 'Academy Building View' },
     ],
   }),
   buildBranch({
@@ -198,14 +184,11 @@ export const BRANCHES = [
     address: 'No. 606/A, Level 6, Vasavi MPM Grand, Yellareddyguda, Ameerpet X Road, Hyderabad, Telangana 500073',
     gmapUrl: 'https://maps.app.goo.gl/XDz2X9graW1t4UKU7',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Ameerpet+Metro+Hyderabad&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_reception.jpg',
+    img: '/branch-building.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_meeting_room.jpg', title: 'Wellness Meeting Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_staircase.jpg', title: 'Staircase & Practice Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_auditorium.jpg', title: 'Event Auditorium' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_cabins_lounge.jpg', title: 'Colour-Coded Cabins & Lounge' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_blue_nook.jpg', title: 'Blue Lounge Nook' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/ameerpet_pooja_corner.jpg', title: 'Pooja Corner' },
+      { url: '/branch-building.jpg', title: 'Vasavi MPM Grand Commercial Tower' },
+      { url: '/branch-classroom.jpg', title: 'Ameerpet Computer Training Workstations' },
+      { url: '/branch-reception.jpg', title: 'Executive Reception & Student Lounge' },
     ],
   }),
   buildBranch({
@@ -217,15 +200,14 @@ export const BRANCHES = [
     address: 'Sai Towers, 2nd Floor, H.No: 16-11-477/6/1/A, Near Pillar No. 1519, Dilsukhnagar, Hyderabad, Telangana 500102',
     gmapUrl: 'https://maps.app.goo.gl/evaduEaUU1w8qBby8',
     mapEmbedUrl: 'https://maps.google.com/maps?q=Dilsukhnagar+Hyderabad&z=14&output=embed',
-    img: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_reception.jpg',
+    img: '/branch-classroom.jpg',
     gallery: [
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_classroom.jpg', title: 'Training Classroom' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_conference.jpg', title: 'Conference & Meeting Room' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_pantry.jpg', title: 'Pantry & Lounge Area' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_lounge.jpg', title: 'Breakout Lounge' },
-      { url: 'https://res.cloudinary.com/c2wyo4vs/image/upload/f_auto,q_auto/thoughtspace/assets/dilsukhnagar_pantry_bar.jpg', title: 'Pantry Bar Counter' },
+      { url: '/branch-classroom.jpg', title: 'Sai Towers Training Classroom' },
+      { url: '/branch-reception.jpg', title: 'Dilsukhnagar Reception Nook' },
+      { url: '/branch-building.jpg', title: 'Dilsukhnagar Metro Center Building' },
     ],
   }),
 ];
 
 export default BRANCHES;
+

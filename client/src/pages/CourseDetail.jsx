@@ -537,7 +537,7 @@ export default function CourseDetail() {
       {/* Hero section */}
       <section className="relative pt-40 pb-24 bg-hero-gradient overflow-hidden">
         <div className="absolute inset-0 bg-grid-glow pointer-events-none" />
-        <div className="container-max px-6 md:px-10 lg:px-20 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container-max px-6 sm:px-8 lg:px-12 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
           <RevealOnScroll>
             <div className="flex flex-col gap-5">
               <span className="inline-flex items-center gap-2 text-teal-600 text-xs font-semibold tracking-[0.18em] uppercase glass rounded-full px-3 py-1 w-fit">
