@@ -37,12 +37,6 @@ export interface ThoughtflowsHeroProps {
   videoPosterSrc?: string;
   /** Image seen through the open doors (the academy). */
   interiorImageSrc?: string;
-  /**
-   * Video mode: academy photos revealed through the opening doors (replacing
-   * what the footage shows behind them). The first appears in the doorway as the
-   * doors part; later ones cross-fade in as the story moves to the final message.
-   */
-  doorRevealImages?: string[];
   /** Logo for dark backgrounds (light wordmark). Pass "" to show the text label instead. */
   logoSrc?: string;
   academyName?: string;
@@ -120,7 +114,6 @@ export function ThoughtflowsMedicalCodingHero({
   mobileVideoSrc,
   videoPosterSrc,
   interiorImageSrc = "/videos/thoughtflows-hero-poster.jpg",
-  doorRevealImages = ["/videos/thoughtflows-hero-poster.jpg", "/branch-classroom.jpg"],
   logoSrc = "/thoughtflows-logo-light-720.png",
   academyName = "THOUGHTFLOWS",
   tagline = "Medical Coding Academy",
@@ -158,9 +151,6 @@ export function ThoughtflowsMedicalCodingHero({
   const interiorRef = React.useRef<HTMLDivElement>(null);
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const gradeRef = React.useRef<HTMLDivElement>(null);
-  const revealRef = React.useRef<HTMLDivElement>(null);
-  const revealImgRefs = React.useRef<(HTMLImageElement | null)[]>([]);
-  const doorRevealCount = React.useRef(0);
   const videoModeRef = React.useRef(false);
   const wantedProgress = React.useRef(0);
 
@@ -209,7 +199,6 @@ export function ThoughtflowsMedicalCodingHero({
 
   const useVideo = !!videoSrc && !videoFailed;
   videoModeRef.current = useVideo;
-  doorRevealCount.current = doorRevealImages.length;
   const [videoReady, setVideoReady] = React.useState(false);
   const cities = React.useMemo(() => uniqueCities(branches), [branches]);
   const finalLines = React.useMemo(() => splitSentences(subtitle), [subtitle]);
@@ -327,7 +316,7 @@ export function ThoughtflowsMedicalCodingHero({
     set(dimRef.current, { opacity: String(range(p, 0.5, 0.64)) });
 
     // 4 — Welcome + camera pushes through the doorway (0.56 → 0.86)
-    const w = videoModeRef.current && doorRevealCount.current > 0 ? 0 : range(p, 0.55, 0.66) * (1 - range(p, 0.76, 0.82));
+    const w = range(p, 0.55, 0.66) * (1 - range(p, 0.76, 0.82));
     set(welcomeRef.current, {
       opacity: String(w),
       transform: `translate3d(0, calc(50% + ${(1 - range(p, 0.55, 0.66)) * 24}px), 0) scale(${1 + 0.12 * range(p, 0.6, 0.82)})`,
@@ -338,27 +327,6 @@ export function ThoughtflowsMedicalCodingHero({
     // Video mode: the footage opens the doors itself — just a slow push-in.
     set(sceneRef.current, { transform: `scale(${vm ? 1 + 0.06 * p : 1 + 2.4 * z})` });
     set(gradeRef.current, { opacity: String(0.6 + 0.38 * range(p, 0.68, 0.84)) });
-
-    // Video mode: the academy appears in the doorway as the doors part,
-    // then the doorway widens to fill the frame (stepping inside).
-    if (vm && revealRef.current) {
-      const open = easeInOut(range(p, 0.34, 0.52)); // doors parting (matches the footage)
-      const enter = easeInOut(range(p, 0.56, 0.72)); // walking through
-      const side = 50 - 23 * open - 27 * enter; // % inset left/right (doorway ≈ 27%–73%)
-      const top = 12 * (1 - enter);
-      const r = revealRef.current.style;
-      r.clipPath = `inset(${top.toFixed(2)}% ${side.toFixed(2)}% 0% ${side.toFixed(2)}%)`;
-      r.opacity = open > 0.001 ? "1" : "0";
-      r.transform = `scale(${(1.12 - 0.12 * enter).toFixed(4)})`;
-      const imgs = revealImgRefs.current;
-      const n = imgs.length;
-      imgs.forEach((img, i) => {
-        if (!img) return;
-        // image 0 shows first; each later image cross-fades in over the remaining story
-        const fade = i === 0 ? 1 : range(p, 0.7 + (i - 1) * (0.14 / Math.max(1, n - 1)), 0.8 + (i - 1) * (0.14 / Math.max(1, n - 1)));
-        img.style.opacity = String(fade);
-      });
-    }
     const inside = vm ? 0 : range(p, 0.74, 0.84);
     set(interiorRef.current, {
       opacity: String(inside),
@@ -655,26 +623,6 @@ export function ThoughtflowsMedicalCodingHero({
                   onError={() => setVideoFailed(true)}
                   className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${videoReady ? "opacity-100" : "opacity-0"}`}
                 />
-                {/* Academy photos revealed through the opening doors */}
-                {doorRevealImages.length > 0 && (
-                  <div ref={revealRef} className="absolute inset-0 will-change-[clip-path,transform]" style={{ opacity: 0, clipPath: "inset(12% 50% 0% 50%)" }}>
-                    {doorRevealImages.map((src, i) => (
-                      <img
-                        key={src + i}
-                        ref={(el) => {
-                          revealImgRefs.current[i] = el;
-                        }}
-                        src={src}
-                        alt=""
-                        decoding="async"
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full object-cover"
-                        style={{ opacity: i === 0 ? 1 : 0 }}
-                      />
-                    ))}
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(4,15,32,0.45)_100%)]" />
-                  </div>
-                )}
                 {/* Navy grade — deepens toward the end so the final message reads */}
                 <div
                   ref={gradeRef}
