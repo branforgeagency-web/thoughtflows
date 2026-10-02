@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ThoughtflowsMedicalCodingHero from "@/components/ui/thoughtflows-medical-coding-hero";
 import JourneyIntroSection from "../components/sections/JourneyIntroSection";
@@ -30,6 +31,12 @@ const heroBranches = BRANCHES.map((b) => ({ name: b.name, city: b.city }));
  */
 export default function Home() {
   const navigate = useNavigate();
+
+  // One typeface across the whole home page (see index.css: html[data-tf-home]).
+  useEffect(() => {
+    document.documentElement.setAttribute("data-tf-home", "");
+    return () => document.documentElement.removeAttribute("data-tf-home");
+  }, []);
 
   return (
     <div className="relative bg-[linear-gradient(180deg,#F8FCFD_0%,#F3F9FC_30%,#F8FCFD_55%,#EEF6FB_80%,#F8FCFD_100%)]">

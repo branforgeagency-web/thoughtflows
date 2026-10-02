@@ -44,3 +44,11 @@
 ::-webkit-scrollbar-thumb { background: #12BFD1; border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: #0EA2B2; }
 
+
+/* Homepage typography — one family everywhere on the home page (incl. navbar,
+   footer and floating actions), matching the hero headline: Plus Jakarta Sans.
+   Toggled by pages/Home.jsx via <html data-tf-home>. */
+html[data-tf-home] body,
+html[data-tf-home] body *:not(svg):not(svg *) {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif !important;
+}
