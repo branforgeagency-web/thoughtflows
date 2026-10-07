@@ -52,3 +52,8 @@ html[data-tf-home] body,
 html[data-tf-home] body *:not(svg):not(svg *) {
   font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif !important;
 }
+
+/* Exception: branch polaroid labels keep their handwritten marker font. */
+html[data-tf-home] body .pl-note {
+  font-family: Caveat, "Segoe Print", cursive !important;
+}

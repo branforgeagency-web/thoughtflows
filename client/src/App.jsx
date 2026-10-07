@@ -13,6 +13,7 @@ import Gallery from "./pages/Gallery";
 import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import Contact from "./pages/Contact";
+import Encyclopedia from "./pages/Encyclopedia";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:slug" element={<BlogDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/encyclopedia" element={<Encyclopedia />} />
         <Route path="*" element={<NotFound />} />
       </Route>
       <Route path="/admin/login" element={<AdminLogin />} />

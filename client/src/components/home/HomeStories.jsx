@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
-import { Chapter, ChapterHeader, Accent, Reveal, ArrowButton, card } from "./cinematic";
+import { Chapter, ChapterHeader, Accent, Reveal } from "./cinematic";
 
 /** Chapter 07 — student stories (same /testimonials API as TestimonialsSection). */
 export default function HomeStories() {
   const { data: testimonials, loading } = useFetch("/testimonials");
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [hovered, setHovered] = useState(null);
 
   const list = Array.isArray(testimonials) ? testimonials : [];
   const go = (i) => {
+    const next = (i + list.length) % list.length;
+    if (next === index || !fade) return;
     setFade(false);
     window.setTimeout(() => {
-      setIndex((i + list.length) % list.length);
+      setIndex(next);
       setFade(true);
     }, 220);
   };
@@ -40,60 +43,92 @@ export default function HomeStories() {
           </>
         }
         lead="From career-switchers to fresh graduates — hear how Thoughtflows transformed their career trajectories."
-        aside={
-          list.length > 1 ? (
-            <div className="flex items-center gap-3">
-              <ArrowButton dir={-1} label="Previous story" onClick={() => go(index - 1)} />
-              <ArrowButton dir={1} label="Next story" onClick={() => go(index + 1)} />
-            </div>
-          ) : null
-        }
       />
 
       <Reveal delay={200} y={40} className="mt-10">
-        <figure className={`${card} relative overflow-hidden p-8 hover:translate-y-0 sm:p-12 lg:p-14`} aria-live="polite">
-          <span aria-hidden="true" className="pointer-events-none absolute -top-10 right-8 font-display text-[12rem] leading-none text-[#12BFD1]/10">
-            ”
-          </span>
+        <figure className="flex flex-col items-center gap-10 py-10 sm:py-16" aria-live="polite">
           {loading || !t ? (
-            <div className="h-40 animate-pulse rounded-2xl bg-[#EEF6FB]" />
+            <div className="h-32 w-full max-w-2xl animate-pulse rounded-2xl bg-[#EEF6FB]" />
           ) : (
-            <div
-              className="relative grid gap-10 transition-[opacity,filter,transform] duration-300 lg:grid-cols-12 lg:items-center"
-              style={{ opacity: fade ? 1 : 0, filter: fade ? "none" : "blur(6px)", transform: fade ? "none" : "translateY(8px)" }}
-            >
-              <blockquote className="font-display text-xl font-semibold leading-relaxed text-[#0A2540] sm:text-2xl lg:col-span-8">“{t.quote}”</blockquote>
-              <figcaption className="flex items-center gap-4 lg:col-span-4 lg:flex-col lg:items-start">
-                {t.photo && <img src={t.photo} alt="" loading="lazy" className="h-16 w-16 rounded-2xl object-cover shadow-[0_12px_30px_-12px_rgba(6,59,122,0.5)]" />}
-                <span>
-                  <span className="block font-display text-base font-extrabold text-[#063B7A]">{t.name}</span>
-                  <span className="mt-1 block text-xs font-bold uppercase tracking-[0.18em] text-[#6B7C8F]">
-                    {t.role}
-                    {t.company ? ` · ${t.company}` : ""}
-                  </span>
+            <>
+              {/* Quote */}
+              <div className="relative px-8">
+                <span aria-hidden="true" className="pointer-events-none absolute -left-2 -top-8 select-none font-serif text-8xl leading-none text-[#063B7A]/[0.07]">
+                  “
+                </span>
+                <blockquote
+                  className="max-w-2xl text-center text-2xl font-light leading-relaxed text-[#0A2540] transition-all duration-[400ms] ease-out md:text-3xl"
+                  style={{ opacity: fade ? 1 : 0, filter: fade ? "none" : "blur(4px)", transform: fade ? "scale(1)" : "scale(0.98)" }}
+                >
+                  {t.quote}
+                </blockquote>
+                <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 -right-2 select-none font-serif text-8xl leading-none text-[#063B7A]/[0.07]">
+                  ”
+                </span>
+              </div>
+
+              <figcaption className="mt-2 flex flex-col items-center gap-6">
+                {/* Role */}
+                <p
+                  className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[#6B7C8F] transition-all duration-500 ease-out"
+                  style={{ opacity: fade ? 1 : 0, transform: fade ? "translateY(0)" : "translateY(8px)" }}
+                >
+                  {t.role}
+                  {t.company ? ` · ${t.company}` : ""}
                   {(t.beforeRole || t.afterRole) && (
-                    <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#E7F9FB] px-4 py-1.5 text-xs font-bold text-[#4A5D73]">
-                      {t.beforeRole} <span className="text-[#0E8FA0]">→</span> <span className="text-[#0E8FA0]">{t.afterRole}</span>
+                    <span className="mt-2 block normal-case tracking-normal text-[#0E8FA0]">
+                      {t.beforeRole} → {t.afterRole}
                     </span>
                   )}
-                </span>
-              </figcaption>
-            </div>
-          )}
+                </p>
 
-          {list.length > 1 && (
-            <div className="relative mt-10 flex gap-2">
-              {list.map((_, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => go(i)}
-                  aria-label={`Go to story ${i + 1}`}
-                  aria-current={i === index}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${i === index ? "w-10 bg-[#12BFD1]" : "w-1.5 bg-[#063B7A]/20 hover:bg-[#063B7A]/40"}`}
-                />
-              ))}
-            </div>
+                {/* Avatar pills — the active one (or hovered) expands to show the name */}
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {list.map((s, i) => {
+                    const isActive = i === index;
+                    const showName = isActive || (hovered === i && !isActive);
+                    return (
+                      <button
+                        key={s._id || s.id || i}
+                        type="button"
+                        onClick={() => go(i)}
+                        onMouseEnter={() => setHovered(i)}
+                        onMouseLeave={() => setHovered(null)}
+                        aria-label={`Show story from ${s.name}`}
+                        aria-current={isActive}
+                        className={`relative flex cursor-pointer items-center rounded-full transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#12BFD1] ${
+                          isActive ? "bg-[#063B7A] shadow-lg" : "bg-transparent hover:bg-[#EEF6FB]"
+                        } ${showName ? "py-2 pl-2 pr-4" : "p-0.5"}`}
+                      >
+                        {s.photo ? (
+                          <img
+                            src={s.photo}
+                            alt=""
+                            loading="lazy"
+                            className={`h-8 w-8 shrink-0 rounded-full object-cover transition-all duration-500 ${isActive ? "ring-2 ring-white/30" : "hover:scale-105"}`}
+                          />
+                        ) : (
+                          <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${isActive ? "bg-white/15 text-white" : "bg-[#E7F9FB] text-[#063B7A]"}`}>
+                            {String(s.name || "?").charAt(0).toUpperCase()}
+                          </span>
+                        )}
+                        <span
+                          className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                            showName ? "ml-2 grid-cols-[1fr] opacity-100" : "ml-0 grid-cols-[0fr] opacity-0"
+                          }`}
+                        >
+                          <span className="overflow-hidden">
+                            <span className={`block whitespace-nowrap text-sm font-medium transition-colors duration-300 ${isActive ? "text-white" : "text-[#0A2540]"}`}>
+                              {s.name}
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </figcaption>
+            </>
           )}
         </figure>
       </Reveal>
